@@ -16,10 +16,10 @@ jobs:
       - name: Deploy to Hetzner Server via SSH action
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
+          host: 157.90.240.27
+          username: root
           key: ${{ secrets.PRIVATE_KEY }}
-          port: ${{ secrets.PORT }}
+          port: 22
           script: |
             cd /root/eltrm/et-web
             git pull 
