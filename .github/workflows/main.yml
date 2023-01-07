@@ -1,0 +1,25 @@
+name: ET WEB CI
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - stag 
+  workflow_dispatch:
+
+ 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Hetzner Server via SSH action
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /root/eltrm/et-web
+            git pull 
