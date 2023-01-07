@@ -14,14 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Deploy to Hetzner Server via SSH action
-        uses: appleboy/ssh-action@master
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@master
         with:
           host: 157.90.240.27
           username: root
+          password: ${{ secrets.PASSWORD }}
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
-          script: |
-            ls
-            cp . /root/eltrm/et-web
-  
+          source: "."
+          target: "/root/eltrm/et-web"            
