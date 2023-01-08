@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - dev
-      - stag 
+      - stag-* 
   workflow_dispatch:
 
  
