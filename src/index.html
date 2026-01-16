@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="El Terminali - Professional inventory management with barcode scanning. Turn your mobile into a powerful stock management tool." />
+    <meta name="author" content="El Terminali" />
+    <meta name="keywords" content="inventory management, barcode scanner, stock management, warehouse, mobile app" />
+    <title data-i18n="meta.title">El Terminali - Smart Inventory Management</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
+    
+    <!-- Translations -->
+    <script src="js/translations.js"></script>
+    
+    <!-- Firebase Analytics -->
+    <script src="js/firebase.js"></script>
+    
+    <style>
+        :root {
+            /* iOS-inspired color system */
+            --blue: #007AFF;
+            --cyan: #32ADE6;
+            --purple: #AF52DE;
+            --pink: #FF2D55;
+            --orange: #FF9500;
+            --yellow: #FFCC00;
+            --green: #34C759;
+            --mint: #00C7BE;
+            --teal: #30B0C7;
+            --indigo: #5856D6;
+            --red: #FF3B30;
+            
+            /* Gradients */
+            --gradient-blue: linear-gradient(135deg, #007AFF 0%, #32ADE6 100%);
+            --gradient-purple: linear-gradient(135deg, #AF52DE 0%, #FF2D55 100%);
+            --gradient-green: linear-gradient(135deg, #34C759 0%, #00C7BE 100%);
+            --gradient-orange: linear-gradient(135deg, #FF9500 0%, #FFCC00 100%);
+            --gradient-indigo: linear-gradient(135deg, #5856D6 0%, #007AFF 100%);
+            --gradient-hero: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            
+            /* Typography */
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            
+            /* Spacing */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 12px;
+            --spacing-lg: 16px;
+            --spacing-xl: 24px;
+            --spacing-2xl: 32px;
+            --spacing-3xl: 48px;
+            --spacing-4xl: 64px;
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --radius-2xl: 24px;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
+            --shadow-glow-blue: 0 8px 32px rgba(0, 122, 255, 0.3);
+            --shadow-glow-purple: 0 8px 32px rgba(175, 82, 222, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #fafafa;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: var(--spacing-lg) var(--spacing-xl);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+        
+        .nav-logo-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        
+        .nav-logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2xl);
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+        
+        .nav-cta {
+            background: var(--gradient-blue);
+            color: white !important;
+            padding: var(--spacing-sm) var(--spacing-xl);
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        /* Language Switcher */
+        .language-switcher-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .language-switcher {
+            display: flex;
+            gap: 4px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: var(--radius-md);
+            padding: 4px;
+        }
+        
+        .lang-btn {
+            padding: 6px 12px;
+            border: none;
+            background: transparent;
+            color: #666;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(0, 0, 0, 0.1);
+            color: var(--blue);
+        }
+        
+        .lang-btn.active {
+            background: var(--gradient-blue);
+            color: white;
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow-blue);
+        }
+        
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1a1a1a;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient-hero);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 120px var(--spacing-xl) var(--spacing-4xl);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(0, 122, 255, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(175, 82, 222, 0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-4xl);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            color: white;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: var(--spacing-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero-badge i {
+            color: var(--cyan);
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: var(--spacing-xl);
+            background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-description {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: var(--spacing-2xl);
+            max-width: 500px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-lg) var(--spacing-2xl);
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+            box-shadow: var(--shadow-glow-blue);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 122, 255, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .phone-mockup {
+            position: relative;
+            width: 280px;
+            height: 580px;
+            background: #1a1a1a;
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: var(--shadow-xl), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+        
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #007AFF 0%, #32ADE6 50%, #AF52DE 100%);
+            border-radius: 32px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .phone-screen-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .phone-notch {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 28px;
+            background: #1a1a1a;
+            border-radius: 0 0 16px 16px;
+            z-index: 10;
+        }
+        
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-lg);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-card-1 {
+            top: 10%;
+            left: -20%;
+            animation-delay: 0s;
+        }
+        
+        .floating-card-2 {
+            bottom: 20%;
+            right: -15%;
+            animation-delay: 2s;
+        }
+        
+        .floating-card-3 {
+            top: 50%;
+            left: -30%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: white;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .floating-card-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #1a1a1a;
+        }
+        
+        .floating-card-subtitle {
+            font-size: 0.875rem;
+            color: #666;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: var(--spacing-4xl) var(--spacing-xl);
+            margin-top: -60px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stats-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+            padding: var(--spacing-3xl);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-xl);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-label {
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: var(--spacing-xs);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: var(--spacing-4xl) var(--spacing-xl);
+            background: #fafafa;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto var(--spacing-4xl);
+        }
+        
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            background: rgba(0, 122, 255, 0.1);
+            color: var(--blue);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .section-description {
+            font-size: 1.125rem;
+            color: #666;
+        }
+        
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-xl);
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-2xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            display: flex;
+            gap: var(--spacing-xl);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .feature-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .feature-content p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Quick Actions */
+        .quick-actions {
+            padding: var(--spacing-4xl) var(--spacing-xl);
+            background: white;
+        }
+        
+        .actions-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-xl);
+        }
+        
+        .action-card {
+            text-align: center;
+            padding: var(--spacing-2xl);
+            background: #fafafa;
+            border-radius: var(--radius-xl);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        
+        .action-card:hover {
+            background: white;
+            box-shadow: var(--shadow-md);
+            border-color: rgba(0, 122, 255, 0.2);
+            transform: translateY(-4px);
+        }
+        
+        .action-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto var(--spacing-lg);
+            transition: transform 0.3s ease;
+        }
+        
+        .action-card:hover .action-icon {
+            transform: scale(1.1);
+        }
+        
+        .action-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .action-subtitle {
+            font-size: 0.875rem;
+            color: #666;
+        }
+        
+        /* Testimonial */
+        .testimonial {
+            padding: var(--spacing-4xl) var(--spacing-xl);
+            background: var(--gradient-hero);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            font-size: 20rem;
+            color: rgba(255, 255, 255, 0.03);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-quote {
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: white;
+            line-height: 1.5;
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-lg);
+        }
+        
+        .testimonial-avatar {
+            width: 56px;
+            height: 56px;
+            background: var(--gradient-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .testimonial-info {
+            text-align: left;
+        }
+        
+        .testimonial-name {
+            font-weight: 700;
+            color: white;
+        }
+        
+        .testimonial-role {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+        }
+        
+        /* Download Section */
+        .download {
+            padding: var(--spacing-4xl) var(--spacing-xl);
+            background: #fafafa;
+        }
+        
+        .download-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .download-card {
+            background: white;
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-3xl);
+            box-shadow: var(--shadow-lg);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: var(--spacing-3xl);
+            align-items: center;
+        }
+        
+        .download-content h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .download-content p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .download-buttons {
+            display: flex;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+        
+        .store-btn {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: #1a1a1a;
+            color: white;
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .store-btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .store-btn i {
+            font-size: 2rem;
+        }
+        
+        .store-btn-text {
+            text-align: left;
+        }
+        
+        .store-btn-label {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+        
+        .store-btn-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        
+        .download-visual {
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+        
+        .download-qr {
+            width: 120px;
+            height: 120px;
+            background: #f5f5f5;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #ccc;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #0a0a0a;
+            padding: var(--spacing-4xl) var(--spacing-xl) var(--spacing-xl);
+            color: white;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--spacing-3xl);
+            margin-bottom: var(--spacing-3xl);
+        }
+        
+        .footer-brand {
+            max-width: 300px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: white;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        .footer-column h4 {
+            font-weight: 700;
+            margin-bottom: var(--spacing-lg);
+            font-size: 1rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-lg);
+        }
+        
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.875rem;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+        
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background: var(--blue);
+            transform: translateY(-2px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-content {
+                order: 1;
+            }
+            
+            .hero-visual {
+                order: 0;
+                margin-bottom: var(--spacing-2xl);
+            }
+            
+            .hero-description {
+                margin: 0 auto var(--spacing-2xl);
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .floating-card {
+                display: none;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .actions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .download-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .download-buttons {
+                justify-content: center;
+            }
+            
+            .download-visual {
+                justify-content: center;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: var(--spacing-xl);
+                box-shadow: var(--shadow-lg);
+                gap: var(--spacing-lg);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
+            .hero {
+                padding-top: 100px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .stats-container {
+                padding: var(--spacing-xl);
+            }
+            
+            .stat-value {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .actions-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--spacing-md);
+            }
+            
+            .action-card {
+                padding: var(--spacing-lg);
+            }
+            
+            .action-icon {
+                width: 56px;
+                height: 56px;
+                font-size: 1.5rem;
+            }
+            
+            .testimonial-quote {
+                font-size: 1.25rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xl);
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+            }
+            
+            .store-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="nav-logo-icon"><img src="assets/img/logo-small.png" alt="El Terminali"></span>
+                El Terminali
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features" data-i18n="nav.features">Features</a></li>
+                <li><a href="#download" data-i18n="nav.download">Download</a></li>
+                <li><a href="./support/index.html" data-i18n="footer.links.support">Support</a></li>
+                <li><a href="./docs/index.html" data-i18n="footer.links.docs">Docs</a></li>
+                <li class="language-switcher-container">
+                    <div class="language-switcher" id="language-switcher">
+                        <button class="lang-btn" data-lang="en" title="English">EN</button>
+                        <button class="lang-btn" data-lang="tr" title="Türkçe">TR</button>
+                        <button class="lang-btn" data-lang="de" title="Deutsch">DE</button>
+                    </div>
+                </li>
+                <li><a href="https://app.eltrm.com" class="nav-cta" data-i18n="nav.login">Sign In</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <i class="bi-list"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="bi-stars"></i>
+                    <span data-i18n="hero.badge">Smart Inventory Management</span>
+                </div>
+                <h1 class="hero-title" data-i18n="hero.title">Turn Your Phone Into a Powerful Inventory System</h1>
+                <p class="hero-description" data-i18n="hero.description">Scan barcodes, manage warehouses, track stock levels, and get real-time alerts — all from your mobile device.</p>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn btn-primary">
+                        <i class="bi-download"></i>
+                        <span data-i18n="hero.getStarted">Get Started</span>
+                    </a>
+                    <a href="https://app.eltrm.com" class="btn btn-secondary">
+                        <i class="bi-arrow-right"></i>
+                        <span data-i18n="nav.login">Sign In</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <img src="assets/img/logo.png" alt="El Terminali App" class="phone-screen-logo">
+                    </div>
+                </div>
+                <div class="floating-card floating-card-1">
+                    <div class="floating-card-icon" style="background: var(--gradient-blue);">
+                        <i class="bi-box-seam-fill"></i>
+                    </div>
+                    <div class="floating-card-title">2,847</div>
+                    <div class="floating-card-subtitle">Total Items</div>
+                </div>
+                <div class="floating-card floating-card-2">
+                    <div class="floating-card-icon" style="background: var(--gradient-green);">
+                        <i class="bi-check-circle-fill"></i>
+                    </div>
+                    <div class="floating-card-title">Stock In</div>
+                    <div class="floating-card-subtitle">+156 items today</div>
+                </div>
+                <div class="floating-card floating-card-3">
+                    <div class="floating-card-icon" style="background: var(--gradient-orange);">
+                        <i class="bi-bell-fill"></i>
+                    </div>
+                    <div class="floating-card-title">5 Alerts</div>
+                    <div class="floating-card-subtitle">Low stock items</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-value">50K+</div>
+                <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">10M+</div>
+                <div class="stat-label">Barcodes Scanned</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">99.9%</div>
+                <div class="stat-label">Uptime</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">4.8★</div>
+                <div class="stat-label">App Rating</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <span class="section-badge"><i class="bi-lightning-charge-fill"></i> <span data-i18n="features.title">Features</span></span>
+            <h2 class="section-title" data-i18n="features.subtitle">Everything You Need to Manage Inventory</h2>
+            <p class="section-description">Powerful features designed to streamline your inventory operations and boost productivity.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon" style="background: var(--gradient-blue);">
+                    <i class="bi-upc-scan"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Barcode Scanning</h3>
+                    <p>Instantly scan any barcode using your phone's camera. Supports EAN, UPC, QR codes, and more. Process hundreds of items in minutes.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: var(--gradient-purple);">
+                    <i class="bi-building"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Multi-Warehouse</h3>
+                    <p>Manage inventory across multiple locations. Track stock levels, transfer items between warehouses, and maintain full visibility.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: var(--gradient-orange);">
+                    <i class="bi-bell-fill"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Smart Alerts</h3>
+                    <p>Get notified when stock runs low. Set custom thresholds for each product and never run out of important inventory again.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background: var(--gradient-green);">
+                    <i class="bi-graph-up-arrow"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Reports & Analytics</h3>
+                    <p>Generate detailed reports on stock movements, valuations, and trends. Export to CSV or Excel for further analysis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+        <div class="actions-container">
+            <div class="section-header">
+                <span class="section-badge"><i class="bi-cursor-fill"></i> Quick Actions</span>
+                <h2 class="section-title">Fast Operations at Your Fingertips</h2>
+                <p class="section-description">Perform common inventory tasks with just a few taps.</p>
+            </div>
+            <div class="actions-grid">
+                <div class="action-card">
+                    <div class="action-icon" style="background: var(--gradient-blue);">
+                        <i class="bi-arrow-down-circle-fill"></i>
+                    </div>
+                    <div class="action-title">Stock In</div>
+                    <div class="action-subtitle">Record incoming inventory</div>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon" style="background: var(--gradient-orange);">
+                        <i class="bi-arrow-up-circle-fill"></i>
+                    </div>
+                    <div class="action-title">Stock Out</div>
+                    <div class="action-subtitle">Track outgoing items</div>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon" style="background: var(--gradient-purple);">
+                        <i class="bi-qr-code-scan"></i>
+                    </div>
+                    <div class="action-title">Scan</div>
+                    <div class="action-subtitle">Quick barcode lookup</div>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon" style="background: var(--gradient-green);">
+                        <i class="bi-plus-circle-fill"></i>
+                    </div>
+                    <div class="action-title">Add Stock</div>
+                    <div class="action-subtitle">Create new products</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="testimonial-container">
+            <p class="testimonial-quote">"As someone who runs a small business, I found this inventory management mobile app to be an incredibly useful tool. It allowed me to track my stock levels and manage my inventory from anywhere, which saved me a lot of time and hassle."</p>
+            <div class="testimonial-author">
+                <div class="testimonial-avatar">M</div>
+                <div class="testimonial-info">
+                    <div class="testimonial-name">Mehmet K.</div>
+                    <div class="testimonial-role">Small Business Owner</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download" id="download">
+        <div class="download-container">
+            <div class="download-card">
+                <div class="download-content">
+                    <h2 data-i18n="download.title">Download the App</h2>
+                    <p data-i18n="download.subtitle">Get El Terminali on your mobile device and start managing your inventory today. Available for iOS and Android.</p>
+                    <div class="download-buttons">
+                        <a href="https://apps.apple.com/us/app/el-terminali/id1116086125" class="store-btn">
+                            <i class="bi-apple"></i>
+                            <div class="store-btn-text">
+                                <div class="store-btn-label">Download on the</div>
+                                <div class="store-btn-name">App Store</div>
+                            </div>
+                        </a>
+                        <a href="https://eltrm.com/eltrm_latest_16.apk" class="store-btn">
+                            <i class="bi-android2"></i>
+                            <div class="store-btn-text">
+                                <div class="store-btn-label">Download</div>
+                                <div class="store-btn-name">Android APK</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="download-visual">
+                    <div class="download-qr">
+                        <i class="bi-qr-code"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="nav-logo-icon"><img src="assets/img/logo-small.png" alt="El Terminali"></span>
+                        El Terminali
+                    </div>
+                    <p data-i18n="footer.description">Professional inventory management solution for businesses of all sizes. Scan, track, and manage your stock with ease.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="https://app.eltrm.com">Web App</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="./docs/index.html">Documentation</a></li>
+                        <li><a href="./support/index.html">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="https://eltrm.com/privacy/">Privacy Policy</a></li>
+                        <li><a href="./terms/index-en.html">Terms of Service</a></li>
+                        <li><a href="https://eltrm.com/eula/">EULA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copyright" data-i18n="footer.copyright">© 2024 El Terminali. All rights reserved.</div>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter"><i class="bi-twitter-x"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="bi-linkedin"></i></a>
+                    <a href="mailto:info@eltrm.com" aria-label="Email"><i class="bi-envelope-fill"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = navToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('bi-list');
+                icon.classList.add('bi-x-lg');
+            } else {
+                icon.classList.remove('bi-x-lg');
+                icon.classList.add('bi-list');
+            }
+        });
+
+        // Close mobile menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navToggle.querySelector('i').classList.remove('bi-x-lg');
+                navToggle.querySelector('i').classList.add('bi-list');
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .action-card, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Language switcher
+        document.querySelectorAll('#language-switcher .lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                if (lang && window.LanguageManager) {
+                    window.LanguageManager.setLanguage(lang);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
