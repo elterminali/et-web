@@ -57,9 +57,24 @@ const translations = {
         privacy: "Privacy Policy",
         terms: "Terms of Service",
         support: "Support",
-        docs: "Documentation"
+        docs: "Documentation",
+        deleteAccount: "Delete Account"
       },
       copyright: "© 2024 eltrm. All rights reserved."
+    },
+    deleteAccount: {
+      title: "Delete Account",
+      subtitle: "Request to delete your eltrm account and associated data",
+      description: "We're sorry to see you go. If you'd like to delete your account and all associated data, please follow the instructions below.",
+      howTo: "How to Request Deletion",
+      step1Title: "Send an Email",
+      step1Desc: "Send an email to our support team from the email address associated with your account.",
+      step2Title: "Verification",
+      step2Desc: "Our team will verify your request and may ask for additional confirmation to ensure the security of your data.",
+      step3Title: "Processing",
+      step3Desc: "Once verified, we will delete your account and all associated data within 30 days. This action is permanent and cannot be undone.",
+      emailButton: "Email Deletion Request",
+      backHome: "Back to Home"
     },
     meta: {
       title: "El Terminali - Smart Inventory Management",
@@ -235,9 +250,24 @@ const translations = {
         privacy: "Gizlilik Politikası",
         terms: "Hizmet Şartları",
         support: "Destek",
-        docs: "Dokümantasyon"
+        docs: "Dokümantasyon",
+        deleteAccount: "Hesabı Sil"
       },
       copyright: "© 2024 eltrm. Tüm hakları saklıdır."
+    },
+    deleteAccount: {
+      title: "Hesabı Sil",
+      subtitle: "eltrm hesabınızın ve ilişkili verilerinizin silinmesini talep edin",
+      description: "Ayrıldığınız için üzgünüz. Hesabınızı ve ilişkili tüm verileri silmek istiyorsanız, lütfen aşağıdaki talimatları izleyin.",
+      howTo: "Silme Talebi Nasıl Yapılır",
+      step1Title: "E-posta Gönderin",
+      step1Desc: "Hesabınızla ilişkili e-posta adresinden destek ekibimize bir e-posta gönderin.",
+      step2Title: "Doğrulama",
+      step2Desc: "Ekibimiz talebinizi doğrulayacak ve verilerinizin güvenliğini sağlamak için ek onay isteyebilir.",
+      step3Title: "İşleme",
+      step3Desc: "Doğrulandıktan sonra, hesabınızı ve ilişkili tüm verileri 30 gün içinde sileceğiz. Bu işlem kalıcıdır ve geri alınamaz.",
+      emailButton: "Silme Talebi Gönder",
+      backHome: "Ana Sayfaya Dön"
     },
     meta: {
       title: "El Terminali - Akıllı Envanter Yönetimi",
@@ -413,9 +443,24 @@ const translations = {
         privacy: "Datenschutzrichtlinie",
         terms: "Nutzungsbedingungen",
         support: "Support",
-        docs: "Dokumentation"
+        docs: "Dokumentation",
+        deleteAccount: "Konto löschen"
       },
       copyright: "© 2024 eltrm. Alle Rechte vorbehalten."
+    },
+    deleteAccount: {
+      title: "Konto löschen",
+      subtitle: "Antrag auf Löschung Ihres eltrm-Kontos und der zugehörigen Daten",
+      description: "Es tut uns leid, dass Sie gehen. Wenn Sie Ihr Konto und alle zugehörigen Daten löschen möchten, folgen Sie bitte den unten stehenden Anweisungen.",
+      howTo: "So beantragen Sie die Löschung",
+      step1Title: "E-Mail senden",
+      step1Desc: "Senden Sie eine E-Mail an unser Support-Team von der mit Ihrem Konto verknüpften E-Mail-Adresse.",
+      step2Title: "Verifizierung",
+      step2Desc: "Unser Team wird Ihre Anfrage verifizieren und bittet möglicherweise um zusätzliche Bestätigung, um die Sicherheit Ihrer Daten zu gewährleisten.",
+      step3Title: "Bearbeitung",
+      step3Desc: "Nach der Verifizierung werden wir Ihr Konto und alle zugehörigen Daten innerhalb von 30 Tagen löschen. Diese Aktion ist permanent und kann nicht rückgängig gemacht werden.",
+      emailButton: "Löschantrag per E-Mail senden",
+      backHome: "Zurück zur Startseite"
     },
     meta: {
       title: "El Terminali - Intelligente Inventarverwaltung",
