@@ -1,0 +1,149 @@
+---
+import type { Locale } from '../../i18n/config';
+import { t, localePath } from '../../i18n/config';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import MobileMenu from '../react/MobileMenu';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const i18n = t(locale);
+const currentPath = Astro.url.pathname;
+
+// Strip locale prefix to get bare path for language switcher
+function barePath(path: string): string {
+  if (path.startsWith('/tr')) return path.slice(3) || '/';
+  if (path.startsWith('/de')) return path.slice(3) || '/';
+  return path || '/';
+}
+const bare = barePath(currentPath);
+
+const navLinks = [
+  { href: localePath(locale, '/features/'), label: i18n.nav.features },
+  { href: localePath(locale, '/plans/'),    label: i18n.nav.plans },
+  { href: localePath(locale, '/download/'), label: i18n.nav.download },
+  { href: localePath(locale, '/docs/'),     label: i18n.nav.docs },
+  { href: localePath(locale, '/support/'),  label: i18n.nav.support },
+];
+---
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href={localePath(locale, '/')} class="nav-logo" aria-label={i18n.a11y.logoAlt}>
+      <img
+        src="/assets/img/logo-small.png"
+        alt={i18n.a11y.logoSmallAlt}
+        width="36"
+        height="36"
+        class="logo-img"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <span>eltrm</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav aria-label="Main navigation" class="desktop-nav">
+      <ul role="list">
+        {navLinks.map(({ href, label }) => (
+          <li>
+            <a href={href} aria-current={currentPath === href ? 'page' : undefined}>
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <LanguageSwitcher locale={locale} currentPath={bare} />
+      <a href="https://app.eltrm.com" class="btn btn-primary header-cta" rel="noopener noreferrer">
+        {i18n.nav.openWebApp}
+      </a>
+
+      <!-- Mobile menu (React island) — passes strings, no locale context needed client-side -->
+      <MobileMenu
+        client:load
+        openLabel={i18n.nav.openMenu}
+        closeLabel={i18n.nav.closeMenu}
+        links={navLinks}
+        webAppUrl="https://app.eltrm.com"
+        webAppLabel={i18n.nav.openWebApp}
+      />
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    inset-inline: 0;
+    z-index: 100;
+    height: var(--nav-height);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s ease;
+  }
+
+  .header-inner {
+    max-width: var(--max-content);
+    margin-inline: auto;
+    padding-inline: var(--space-6);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #1a1a1a;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .nav-logo:hover { text-decoration: none; }
+  .logo-img { border-radius: var(--radius-md); }
+
+  .desktop-nav { flex: 1; }
+  .desktop-nav ul {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    list-style: none;
+  }
+  .desktop-nav a {
+    color: #555;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .desktop-nav a:hover,
+  .desktop-nav a[aria-current="page"] { color: var(--blue); }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-shrink: 0;
+  }
+
+  .header-cta {
+    padding: var(--space-2) var(--space-6);
+    font-size: 0.9rem;
+    border-radius: var(--radius-full);
+  }
+
+  @media (max-width: 768px) {
+    .desktop-nav { display: none; }
+    .header-cta { display: none; }
+  }
+</style>

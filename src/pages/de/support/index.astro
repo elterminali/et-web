@@ -1,0 +1,26 @@
+---
+import MarketingLayout from '../../../layouts/MarketingLayout.astro';
+import { t } from '../../../i18n/config';
+import { SITE } from '../../../config/site';
+const locale = 'de'; const i18n = t(locale); const s = i18n.support;
+---
+<MarketingLayout locale={locale} title={i18n.meta.supportTitle} description={i18n.meta.supportDescription} canonicalPath="/support/">
+  <section class="section" style="padding-top:calc(var(--nav-height)+var(--space-12));background:#fafafa;min-height:100vh">
+    <div class="section-inner" style="max-width:800px">
+      <div class="section-header">
+        <h1 class="section-title">{s.title}</h1>
+        <p class="section-description">{s.subtitle}</p>
+      </div>
+      <a href={`mailto:${SITE.email}`} style="display:flex;gap:var(--space-4);background:#fff;border-radius:var(--radius-2xl);padding:var(--space-6);border:1px solid rgba(0,0,0,.07);text-decoration:none;color:inherit">
+        <div>
+          <strong style="display:block;font-size:1.1rem;font-weight:700;color:#1a1a1a;margin-bottom:4px">{s.emailCardTitle}</strong>
+          <p style="color:#666;font-size:.9rem">{s.emailCardDescription}</p>
+          <span style="color:var(--blue);font-size:.9rem;font-weight:600">{s.emailCardCta}</span>
+        </div>
+      </a>
+      <div style="margin-top:var(--space-8);text-align:center">
+        <a href={`mailto:${SITE.email}`} class="btn btn-primary">{s.stillNeedHelpCta}</a>
+      </div>
+    </div>
+  </section>
+</MarketingLayout>

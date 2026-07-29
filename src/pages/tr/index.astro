@@ -1,0 +1,38 @@
+---
+import MarketingLayout from '../../layouts/MarketingLayout.astro';
+import Hero from '../../components/astro/Hero.astro';
+import HowItWorks from '../../components/astro/HowItWorks.astro';
+import FeatureSection from '../../components/astro/FeatureSection.astro';
+import PlansComparison from '../../components/astro/PlansComparison.astro';
+import FaqSection from '../../components/astro/FaqSection.astro';
+import { t } from '../../i18n/config';
+
+const locale = 'tr';
+const i18n = t(locale);
+const f = i18n.faq;
+
+const faqItems = [
+  { question: f.q1Question, answer: f.q1Answer },
+  { question: f.q2Question, answer: f.q2Answer },
+  { question: f.q3Question, answer: f.q3Answer },
+  { question: f.q4Question, answer: f.q4Answer },
+  { question: f.q5Question, answer: f.q5Answer },
+  { question: f.q6Question, answer: f.q6Answer },
+  { question: f.q7Question, answer: f.q7Answer },
+  { question: f.q8Question, answer: f.q8Answer },
+];
+---
+<MarketingLayout
+  locale={locale}
+  title={i18n.meta.homeTitle}
+  description={i18n.meta.homeDescription}
+  canonicalPath="/"
+  includeSoftwareApp={true}
+  faqItems={faqItems}
+>
+  <Hero locale={locale} />
+  <HowItWorks locale={locale} />
+  <FeatureSection locale={locale} />
+  <PlansComparison locale={locale} />
+  <FaqSection locale={locale} />
+</MarketingLayout>

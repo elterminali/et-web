@@ -1,0 +1,15 @@
+---
+import MarketingLayout from '../layouts/MarketingLayout.astro';
+import { t } from '../i18n/config';
+const locale = 'en'; const i18n = t(locale);
+---
+<MarketingLayout locale={locale} title={i18n.meta.notFoundTitle} description={i18n.meta.notFoundDescription} canonicalPath="/404" noindex={true}>
+  <section class="not-found section" style="padding-top:calc(var(--nav-height)+var(--space-16));min-height:100vh;display:flex;align-items:center;background:#fafafa">
+    <div class="section-inner" style="text-align:center">
+      <div style="font-size:6rem;margin-bottom:var(--space-6)" aria-hidden="true">404</div>
+      <h1 class="section-title">{i18n.notFound.title}</h1>
+      <p class="section-description">{i18n.notFound.description}</p>
+      <a href="/" class="btn btn-primary" style="margin-top:var(--space-8)">{i18n.notFound.backHome}</a>
+    </div>
+  </section>
+</MarketingLayout>

@@ -1,0 +1,31 @@
+---
+import LegalLayout from '../../../layouts/LegalLayout.astro';
+import { t } from '../../../i18n/config';
+const locale = 'tr'; const i18n = t(locale);
+---
+<LegalLayout locale={locale} title={i18n.meta.termsTitle} description={i18n.meta.termsDescription} canonicalPath="/terms/">
+  <h1>Kullanım Şartları</h1>
+  <p>Hizmetlerimizi ticari olarak makul düzeyde beceri ve özenle sunarız ve Hizmetlerimizden keyif almanızı dileriz. Ancak, Hizmetlerimiz hakkında söz veremeyeceğimiz bazı konular vardır.</p>
+
+  <p><strong>eltrm</strong> VEYA TEDARİKÇİLERİ YA DA DAĞITIMCILARI, İŞBU ŞARTLARDA VE EK ŞARTLARDA AÇIKÇA BELİRTİLENLER HARİCİNDE, HİZMETLERLE İLGİLİ HİÇBİR VAATTE BULUNMAMAKTADIR. ÖRNEĞİN HİZMETLERDE YER ALAN İÇERİKLER, HİZMETLERİN BELİRLİ İŞLEVLERİ, BUNLARIN GÜVENİLİRLİĞİ, KULLANILABİLİRLİĞİ VEYA İHTİYAÇLARINIZI KARŞILAMA YETERLİLİĞİ HAKKINDA HİÇBİR TAAHHÜTTE BULUNMAMAKTAYIZ. HİZMETLERİ «OLDUĞU GİBİ» SUNMAKTAYIZ.</p>
+
+  <p>BAZI YARGI ALANLARI, ZIMNİ TİCARİ ELVERİŞLİLİK GARANTİSİ, BELİRLİ BİR AMACA UYGUNLUK VE HAKLARIN İHLAL EDİLMEMESİ GİBİ GARANTİLER ÖNGÖREBİLMEKTEDİR. YASALARIN İZİN VERDİĞİ ÖLÇÜDE TÜM BU GARANTİLERİ KAPSAM DIŞINDA TUTMAKTAYIZ.</p>
+
+  <p>YASALARIN İZİN VERDİĞİ DURUMLARDA, <strong>eltrm</strong> VE eltrm'NİN ÇÖZÜM ORTAKLARI VE DAĞITICILARI KAYBEDİLEN KÂRLARDAN, GELİRLERDEN VEYA VERİLERDEN; MALİ KAYIPLARDAN VEYA DOLAYLI, ÖZEL, ARIZİ, CEZAİ ZARAR VEYA TAZMİNATLARDAN SORUMLU TUTULAMAZ.</p>
+
+  <p>Yasalar çerçevesinde, işbu şartlardan kaynaklanan herhangi bir hukuki işlemde, <strong>eltrm</strong> ve tedarikçileri ile dağıtımcılarının toplam yükümlülüğü, söz konusu hizmetler için ödediğiniz tutarla sınırlıdır (ya da tercihimize bağlı olarak hizmetler yeniden sunulacaktır). eltrm ve çözüm ortakları ile dağıtımcıları, makul ölçüde öngörülemeyen hiçbir kayıp veya zarardan sorumlu tutulamaz.</p>
+
+  <h2>İletişim</h2>
+  <address>
+    <strong>Eitan &amp; Meir GmbH</strong><br />
+    Marienfelder Allee 195f, 12279 Berlin, Almanya<br />
+    E-posta: <a href="mailto:info@eltrm.com">info@eltrm.com</a>
+  </address>
+</LegalLayout>
+
+<style is:global>
+  .legal-inner h1 { font-size: 1.75rem; margin-bottom: var(--space-3); }
+  .legal-inner h2 { font-size: 1.25rem; margin: var(--space-8) 0 var(--space-3); color: #111; }
+  .legal-inner p { color: #444; line-height: 1.75; margin-bottom: var(--space-4); }
+  .legal-inner address { font-style: normal; background: #f5f6f8; border-radius: var(--radius-lg); padding: var(--space-6); line-height: 2; margin-bottom: var(--space-6); color: #444; }
+</style>

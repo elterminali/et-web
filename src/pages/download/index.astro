@@ -1,0 +1,171 @@
+---
+import MarketingLayout from '../../layouts/MarketingLayout.astro';
+import { t } from '../../i18n/config';
+import { SITE } from '../../config/site';
+
+const locale = 'en';
+const i18n = t(locale);
+const d = i18n.download;
+---
+<MarketingLayout
+  locale={locale}
+  title={i18n.meta.downloadTitle}
+  description={i18n.meta.downloadDescription}
+  canonicalPath="/download/"
+>
+  <section class="download-hero section">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-badge">{d.badge}</span>
+        <h1 class="section-title">{d.title}</h1>
+        <p class="section-description">{d.description}</p>
+      </div>
+
+      <div class="platform-grid">
+        <!-- Web App -->
+        <div class="platform-card platform-web">
+          <div class="platform-icon web-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+            </svg>
+          </div>
+          <h2>{d.webAppLabel}</h2>
+          <p>{d.webAppDescription}</p>
+          <a href={SITE.webAppUrl} class="btn btn-primary" rel="noopener noreferrer">
+            {d.webAppCta}
+          </a>
+        </div>
+
+        <!-- iOS -->
+        <div class="platform-card">
+          <div class="platform-icon ios-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+          </div>
+          <h2>iOS</h2>
+          <p class="platform-sub">{i18n.a11y.appStoreBadgeAlt}</p>
+          <a href={SITE.appStore.ios} class="btn btn-outline" rel="noopener noreferrer" target="_blank">
+            <img src="/assets/img/app-store-badge.svg" alt={i18n.a11y.appStoreBadgeAlt} width="140" height="42" />
+          </a>
+        </div>
+
+        <!-- Android -->
+        <div class="platform-card">
+          <div class="platform-icon android-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zM20.5 8c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zM15.53 2.16l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/>
+            </svg>
+          </div>
+          <h2>Android</h2>
+          <p class="platform-sub">{i18n.a11y.googlePlayBadgeAlt}</p>
+          <a href={SITE.appStore.android} class="btn btn-outline" rel="noopener noreferrer" target="_blank">
+            <img src="/assets/img/google-play-badge.svg" alt={i18n.a11y.googlePlayBadgeAlt} width="140" height="42" />
+          </a>
+        </div>
+      </div>
+
+      <!-- QR Section -->
+      <div class="qr-section">
+        <div class="qr-frame">
+          {SITE.qrImage ? (
+            <img
+              src={SITE.qrImage}
+              alt={i18n.a11y.qrCodeAlt}
+              width="160"
+              height="160"
+              loading="lazy"
+            />
+          ) : (
+            <div class="qr-placeholder" aria-label={i18n.a11y.qrCodeAlt}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h2v2h-2zM18 14h3M14 18h2M18 18h3v3h-3zM20 14v2"/>
+              </svg>
+              <p>QR code<br/>coming soon</p>
+            </div>
+          )}
+        </div>
+        <div class="qr-text">
+          <strong>{d.qrLabel}</strong>
+          <p>{d.qrDescription}</p>
+          <code class="qr-url">eltrm.com/download/</code>
+        </div>
+      </div>
+    </div>
+  </section>
+</MarketingLayout>
+
+<style>
+  .download-hero { background: #fafafa; padding-top: calc(var(--nav-height) + var(--space-12)); min-height: 100vh; }
+
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
+  }
+
+  .platform-card {
+    background: #fff;
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    border: 1px solid rgba(0,0,0,0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-4);
+    box-shadow: var(--shadow-sm);
+  }
+  .platform-web { border-color: rgba(0,122,255,0.2); box-shadow: var(--shadow-glow-blue); }
+
+  .platform-icon {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .web-icon { background: rgba(0,122,255,0.1); color: var(--blue); }
+  .ios-icon { background: #f0f0f0; }
+  .android-icon { background: rgba(52,199,89,0.1); color: var(--green); }
+  .platform-icon svg { width: 40px; height: 40px; }
+
+  .platform-card h2 { font-size: 1.25rem; font-weight: 700; color: #1a1a1a; }
+  .platform-sub { color: #666; font-size: 0.875rem; }
+  .platform-card p:not(.platform-sub) { color: #555; font-size: 0.9375rem; }
+
+  .qr-section {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    max-width: 480px;
+    margin-inline: auto;
+    background: #fff;
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    border: 1px solid rgba(0,0,0,0.07);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .qr-frame {
+    width: 160px; height: 160px;
+    flex-shrink: 0;
+    border: 2px solid rgba(0,0,0,0.08);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    background: #fff;
+  }
+  .qr-frame img { width: 100%; height: 100%; object-fit: contain; }
+  .qr-placeholder { display: flex; flex-direction: column; align-items: center; gap: 8px; color: #aaa; font-size: 0.75rem; text-align: center; padding: 16px; }
+  .qr-placeholder svg { width: 80px; height: 80px; opacity: 0.3; }
+
+  .qr-text { display: flex; flex-direction: column; gap: var(--space-2); }
+  .qr-text strong { font-size: 1rem; color: #1a1a1a; }
+  .qr-text p { color: #666; font-size: 0.875rem; }
+  .qr-url { font-size: 0.875rem; color: var(--blue); background: rgba(0,122,255,0.07); padding: 4px 10px; border-radius: 6px; }
+
+  @media (max-width: 700px) {
+    .platform-grid { grid-template-columns: 1fr; }
+    .qr-section { flex-direction: column; text-align: center; }
+  }
+</style>

@@ -1,0 +1,114 @@
+---
+import type { Locale } from '../../i18n/config';
+import { t } from '../../i18n/config';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const i18n = t(locale);
+const h = i18n.howItWorks;
+
+const steps = [
+  {
+    num: '01',
+    title: h.step1Title,
+    desc: h.step1Description,
+    iconPath: 'M12 4v16m8-8H4',
+  },
+  {
+    num: '02',
+    title: h.step2Title,
+    desc: h.step2Description,
+    iconPath: 'M4 7v10M8 7v10M12 7v10M16 7v10M20 7v10',
+  },
+  {
+    num: '03',
+    title: h.step3Title,
+    desc: h.step3Description,
+    iconPath: 'M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2',
+  },
+  {
+    num: '04',
+    title: h.step4Title,
+    desc: h.step4Description,
+    iconPath: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+  },
+];
+---
+<section class="how-it-works section" id="how-it-works">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-badge" aria-hidden="true">{h.badge}</span>
+      <h2 class="section-title">{h.title}</h2>
+      <p class="section-description">{h.description}</p>
+    </div>
+    <ol class="steps-list" role="list">
+      {steps.map(({ num, title, desc, iconPath }, idx) => (
+        <li class="step-item">
+          <div class="step-num" aria-hidden="true">{num}</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d={iconPath} />
+            </svg>
+          </div>
+          <div class="step-body">
+            <h3>{title}</h3>
+            <p>{desc}</p>
+          </div>
+          {idx < steps.length - 1 && (
+            <div class="step-connector" aria-hidden="true" />
+          )}
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .how-it-works { background: #fff; }
+
+  .steps-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+    list-style: none;
+    counter-reset: none;
+  }
+
+  .step-item {
+    position: relative;
+    text-align: center;
+    padding: var(--space-6);
+    background: #fafafa;
+    border-radius: var(--radius-2xl);
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .step-num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-4);
+    opacity: 0.7;
+  }
+
+  .step-icon {
+    width: 56px; height: 56px;
+    background: rgba(0,122,255,0.1);
+    border-radius: var(--radius-xl);
+    display: flex; align-items: center; justify-content: center;
+    margin-inline: auto;
+    margin-bottom: var(--space-4);
+  }
+  .step-icon svg { width: 28px; height: 28px; color: var(--blue); }
+
+  .step-body h3 { font-size: 1rem; font-weight: 700; color: #1a1a1a; margin-bottom: var(--space-2); }
+  .step-body p { font-size: 0.875rem; color: #666; line-height: 1.6; }
+
+  @media (max-width: 900px) {
+    .steps-list { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 500px) {
+    .steps-list { grid-template-columns: 1fr; }
+  }
+</style>

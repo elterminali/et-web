@@ -1,0 +1,31 @@
+---
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { t } from '../../i18n/config';
+const locale = 'en'; const i18n = t(locale);
+---
+<LegalLayout locale={locale} title={i18n.meta.termsTitle} description={i18n.meta.termsDescription} canonicalPath="/terms/">
+  <h1>Terms of Service</h1>
+  <p>We provide our services with a reasonable level of skill and care and hope that you enjoy using them. However, there are certain things that we do not promise about our services.</p>
+
+  <p><strong>eltrm</strong> or its suppliers or distributors make no warranties except those expressly set forth in these terms and additional terms. For example, we do not warrant that content available in the services, the services' specific functions, their reliability, availability, or ability to meet your needs. We provide the services "as is."</p>
+
+  <p>Some jurisdictions provide for certain warranties, like the implied warranty of merchantability, fitness for a particular purpose, and non-infringement. To the extent permitted by law, we exclude all warranties.</p>
+
+  <p>To the extent permitted by law, in no event shall <strong>eltrm</strong> or eltrm's partners and distributors be liable for any lost profits, revenues, or data, or for any indirect, consequential, special, incidental, or punitive damages however caused and, whether in contract, tort or under any other theory of liability, whether or not you have been advised of the possibility of such damages.</p>
+
+  <p>In accordance with the laws, in any legal action arising from these terms, the total liability of <strong>eltrm</strong> and its suppliers and distributors is limited to the amount you paid to use the services in question (or, at our option, the services will be provided to you again). eltrm and its solution partners and distributors are not liable for any loss or damage that is not reasonably foreseeable.</p>
+
+  <h2>Contact</h2>
+  <address>
+    <strong>Eitan &amp; Meir GmbH</strong><br />
+    Marienfelder Allee 195f, 12279 Berlin, Germany<br />
+    Email: <a href="mailto:info@eltrm.com">info@eltrm.com</a>
+  </address>
+</LegalLayout>
+
+<style is:global>
+  .legal-inner h1 { font-size: 1.75rem; margin-bottom: var(--space-3); }
+  .legal-inner h2 { font-size: 1.25rem; margin: var(--space-8) 0 var(--space-3); color: #111; }
+  .legal-inner p { color: #444; line-height: 1.75; margin-bottom: var(--space-4); }
+  .legal-inner address { font-style: normal; background: #f5f6f8; border-radius: var(--radius-lg); padding: var(--space-6); line-height: 2; margin-bottom: var(--space-6); color: #444; }
+</style>

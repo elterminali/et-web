@@ -1,0 +1,38 @@
+---
+import LegalLayout from '../../../layouts/LegalLayout.astro';
+import { t } from '../../../i18n/config';
+const locale = 'de'; const i18n = t(locale);
+---
+<LegalLayout locale={locale} title={i18n.meta.privacyTitle} description={i18n.meta.privacyDescription} canonicalPath="/privacy/" lastUpdated="1. April 2016">
+  <h1>Datenschutzerklärung</h1>
+  <p><strong>eltrm</strong> (entwickelt von Eitan &amp; Meir GmbH) respektiert die Privatsphäre Ihrer Daten. Diese Datenschutzerklärung gilt seit dem 1. April 2016 und beschreibt, wie wir die von unseren Nutzern übermittelten Informationen erfassen und verwenden. Sie gilt für alle Plattformen, auf denen die Anwendung genutzt wird (iOS, Android und Web).</p>
+  <p><em><strong>Hinweis:</strong> Diese Richtlinie muss aktualisiert werden. Bei Fragen wenden Sie sich bitte an <a href="mailto:info@eltrm.com">info@eltrm.com</a>.</em></p>
+
+  <h2>Diese Datenschutzerklärung umfasst</h2>
+  <ul>
+    <li>Welche Informationen wir von Ihnen erheben</li>
+    <li>Wie wir die von Ihnen erhobenen Informationen verwenden</li>
+    <li>Welche Maßnahmen zum Schutz der von Ihnen erhobenen Informationen getroffen werden</li>
+    <li>Fälle des Verlustes oder Missbrauchs von Informationen, die von Ihnen erhoben wurden und unter unserer Kontrolle stehen</li>
+  </ul>
+
+  <h2>Informationserhebung</h2>
+  <p>eltrm kann Informationen von Ihnen auf verschiedene Weisen erheben. Serverprotokolle sind eine dieser Methoden. Über Serverprotokolle werden von allen unseren Nutzern Informationen wie Browsertyp, ISP, IP-Adresse, verweisende und Exit-Seiten, genutzte Dienste und die Plattform, auf der sie genutzt werden, Seitenaufrufe und Klickzahlen erfasst. Unsere Website verwendet auch Cookies, eine Standardtechnologie. Durch Cookies können Informationen wie angezeigte Seiten und Verweildauer auf der Seite erfasst werden. Diese Art von Informationen wird keinem Nutzer direkt zugeordnet und wird für statistische Informationen über die Nutzung der Website und/oder Anwendungen verwendet.</p>
+  <p>Persönliche Informationen, die eltrm erhebt, werden im folgenden Absatz beschrieben. Bei der Registrierung für unseren Service werden von Ihnen Vorname, Nachname, E-Mail-Adresse und Passwort erhoben. Diese Informationen werden von uns sicher gespeichert und ohne Ihre Erlaubnis nicht an Dritte weitergegeben.</p>
+
+  <h2>Kontakt</h2>
+  <address>
+    <strong>Eitan &amp; Meir GmbH</strong><br />
+    Marienfelder Allee 195f, 12279 Berlin, Deutschland<br />
+    E-Mail: <a href="mailto:info@eltrm.com">info@eltrm.com</a>
+  </address>
+</LegalLayout>
+
+<style is:global>
+  .legal-inner h1 { font-size: 1.75rem; margin-bottom: var(--space-3); }
+  .legal-inner h2 { font-size: 1.25rem; margin: var(--space-8) 0 var(--space-3); color: #111; }
+  .legal-inner p { color: #444; line-height: 1.75; margin-bottom: var(--space-4); }
+  .legal-inner ul { padding-left: var(--space-6); margin-bottom: var(--space-4); }
+  .legal-inner li { color: #444; line-height: 1.7; margin-bottom: var(--space-2); }
+  .legal-inner address { font-style: normal; background: #f5f6f8; border-radius: var(--radius-lg); padding: var(--space-6); line-height: 2; margin-bottom: var(--space-6); color: #444; }
+</style>

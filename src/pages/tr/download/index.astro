@@ -1,0 +1,33 @@
+---
+import MarketingLayout from '../../../layouts/MarketingLayout.astro';
+import { t } from '../../../i18n/config';
+import { SITE } from '../../../config/site';
+const locale = 'tr'; const i18n = t(locale); const d = i18n.download;
+---
+<MarketingLayout locale={locale} title={i18n.meta.downloadTitle} description={i18n.meta.downloadDescription} canonicalPath="/download/">
+  <section class="download-hero section" style="padding-top:calc(var(--nav-height) + var(--space-12)); background:#fafafa; min-height:100vh">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-badge">{d.badge}</span>
+        <h1 class="section-title">{d.title}</h1>
+        <p class="section-description">{d.description}</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-6);max-width:800px;margin-inline:auto">
+        <div style="background:#fff;border-radius:var(--radius-2xl);padding:var(--space-8);border:1px solid rgba(0,122,255,0.2);text-align:center;display:flex;flex-direction:column;gap:var(--space-4);align-items:center">
+          <h2>{d.webAppLabel}</h2>
+          <p style="color:#555;font-size:.9375rem">{d.webAppDescription}</p>
+          <a href={SITE.webAppUrl} class="btn btn-primary" rel="noopener noreferrer">{d.webAppCta}</a>
+        </div>
+        <div style="background:#fff;border-radius:var(--radius-2xl);padding:var(--space-8);border:1px solid rgba(0,0,0,.07);text-align:center;display:flex;flex-direction:column;gap:var(--space-4);align-items:center">
+          <h2>iOS</h2>
+          <a href={SITE.appStore.ios} rel="noopener noreferrer" target="_blank">
+            <img src="/assets/img/app-store-badge.svg" alt={i18n.a11y.appStoreBadgeAlt} width="140" height="42" />
+          </a>
+          <a href={SITE.appStore.android} rel="noopener noreferrer" target="_blank">
+            <img src="/assets/img/google-play-badge.svg" alt={i18n.a11y.googlePlayBadgeAlt} width="140" height="42" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MarketingLayout>

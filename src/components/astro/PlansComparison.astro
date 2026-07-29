@@ -1,0 +1,174 @@
+---
+import type { Locale } from '../../i18n/config';
+import { t, localePath } from '../../i18n/config';
+import { SITE } from '../../config/site';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const i18n = t(locale);
+const p = i18n.plans;
+
+const freeFeatures = [
+  p.freePlanFeature1,
+  p.freePlanFeature2,
+  p.freePlanFeature3,
+  p.freePlanFeature4,
+  p.freePlanFeature5,
+];
+
+const premiumFeatures = [
+  p.premiumPlanFeature1,
+  p.premiumPlanFeature2,
+  p.premiumPlanFeature3,
+  p.premiumPlanFeature4,
+  p.premiumPlanFeature5,
+  p.premiumPlanFeature6,
+  p.premiumPlanFeature7,
+];
+---
+<section class="plans section" id="plans">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-badge" aria-hidden="true">{p.badge}</span>
+      <h2 class="section-title">{p.title}</h2>
+      <p class="section-description">{p.description}</p>
+    </div>
+
+    <div class="plans-grid">
+      <!-- Free plan -->
+      <div class="plan-card">
+        <div class="plan-header">
+          <h3 class="plan-name">{p.freePlanName}</h3>
+          <p class="plan-description">{p.freePlanDescription}</p>
+        </div>
+        <ul class="plan-features" role="list">
+          {freeFeatures.map(f => (
+            <li>
+              <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" class="check-icon">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              {f}
+            </li>
+          ))}
+        </ul>
+        <a href="https://app.eltrm.com" class="btn btn-outline plan-cta" rel="noopener noreferrer">
+          {p.freeCtaLabel}
+        </a>
+      </div>
+
+      <!-- Premium plan -->
+      <div class="plan-card plan-premium">
+        <div class="plan-badge-highlight" aria-label="Premium">Premium</div>
+        <div class="plan-header">
+          <h3 class="plan-name">{p.premiumPlanName}</h3>
+          <p class="plan-description">{p.premiumPlanDescription}</p>
+        </div>
+        <ul class="plan-features" role="list">
+          {premiumFeatures.map(f => (
+            <li>
+              <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" class="check-icon">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              {f}
+            </li>
+          ))}
+        </ul>
+        <a href="https://app.eltrm.com" class="btn btn-primary plan-cta" rel="noopener noreferrer">
+          {p.premiumCtaLabel}
+        </a>
+      </div>
+    </div>
+
+    <div class="plans-notes">
+      <p>
+        <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" class="info-icon">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+        </svg>
+        {p.upgradeNote}
+      </p>
+      <p>
+        <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" class="info-icon">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+        {p.platformNote}
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .plans { background: #fff; }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  .plan-card {
+    background: #fafafa;
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    border: 1px solid rgba(0,0,0,0.07);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    position: relative;
+  }
+
+  .plan-premium {
+    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    border: 1px solid rgba(0,122,255,0.3);
+    box-shadow: var(--shadow-glow-blue);
+  }
+  .plan-premium .plan-name { color: #fff; }
+  .plan-premium .plan-description { color: rgba(255,255,255,0.65); }
+  .plan-premium .plan-features li { color: rgba(255,255,255,0.85); }
+  .plan-premium .check-icon { color: var(--cyan); }
+
+  .plan-badge-highlight {
+    display: inline-flex;
+    background: var(--gradient-blue);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    position: absolute;
+    top: var(--space-6);
+    right: var(--space-6);
+    letter-spacing: 0.05em;
+  }
+
+  .plan-header { display: flex; flex-direction: column; gap: var(--space-2); }
+  .plan-name { font-size: 1.5rem; font-weight: 800; color: #1a1a1a; }
+  .plan-description { color: #666; font-size: 0.9375rem; }
+
+  .plan-features { list-style: none; display: flex; flex-direction: column; gap: var(--space-3); }
+  .plan-features li {
+    display: flex; align-items: flex-start; gap: var(--space-3);
+    color: #333; font-size: 0.9375rem; line-height: 1.4;
+  }
+  .check-icon { width: 18px; height: 18px; color: var(--green); flex-shrink: 0; margin-top: 1px; }
+
+  .plan-cta { margin-top: auto; width: 100%; justify-content: center; }
+
+  .plans-notes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: 640px;
+    margin-inline: auto;
+    text-align: center;
+  }
+  .plans-notes p {
+    display: flex; align-items: flex-start; justify-content: center;
+    gap: var(--space-2); font-size: 0.875rem; color: #666;
+  }
+  .info-icon { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; color: var(--blue); }
+
+  @media (max-width: 700px) {
+    .plans-grid { grid-template-columns: 1fr; }
+  }
+</style>

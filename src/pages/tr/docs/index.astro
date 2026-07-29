@@ -1,0 +1,32 @@
+---
+import MarketingLayout from '../../../layouts/MarketingLayout.astro';
+import { t } from '../../../i18n/config';
+const locale = 'tr'; const i18n = t(locale); const d = i18n.docs;
+const sections = [
+  [d.createAccountTitle, d.createAccountDescription],
+  [d.scanBarcodeTitle, d.scanBarcodeDescription],
+  [d.addStockTitle, d.addStockDescription],
+  [d.warehousesTitle, d.warehousesDescription],
+  [d.lotsTitle, d.lotsDescription],
+  [d.reportsTitle, d.reportsDescription],
+  [d.premiumTitle, d.premiumDescription],
+];
+---
+<MarketingLayout locale={locale} title={i18n.meta.docsTitle} description={i18n.meta.docsDescription} canonicalPath="/docs/">
+  <section class="section" style="padding-top:calc(var(--nav-height)+var(--space-12));background:#fafafa;min-height:100vh">
+    <div class="section-inner" style="max-width:800px">
+      <div class="section-header">
+        <h1 class="section-title">{d.title}</h1>
+        <p class="section-description">{d.subtitle}</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+        {sections.map(([title,desc]) => (
+          <div style="background:#fff;border-radius:var(--radius-xl);padding:var(--space-6);border:1px solid rgba(0,0,0,.06)">
+            <h3 style="font-size:1.0625rem;font-weight:700;color:#1a1a1a;margin-bottom:var(--space-2)">{title}</h3>
+            <p style="color:#666;font-size:.9375rem;line-height:1.7">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</MarketingLayout>

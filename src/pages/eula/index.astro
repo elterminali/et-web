@@ -1,0 +1,86 @@
+---
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { t } from '../../i18n/config';
+const locale = 'en'; const i18n = t(locale);
+---
+<LegalLayout locale={locale} title={i18n.meta.eulaTitle} description={i18n.meta.eulaDescription} canonicalPath="/eula/" lastUpdated="January 2026">
+  <h1>End User License Agreement (EULA)</h1>
+
+  <p>This End User License Agreement ("Agreement") is a legal agreement between you ("User") and <strong>Eitan &amp; Meir GmbH</strong> ("Company", "we", "us", or "our") governing your use of the <strong>eltrm</strong> mobile application ("App").</p>
+
+  <p>By downloading, installing, or using the App, you agree to be bound by this Agreement. If you do not agree, do not use the App.</p>
+
+  <h2>1. Scope of License</h2>
+  <p>We grant you a limited, non-exclusive, non-transferable, revocable license to use the App on Apple-branded devices that you own or control, as permitted by the Apple Media Services Terms and Conditions.</p>
+
+  <h2>2. Ownership</h2>
+  <p>The App and all related intellectual property rights are and remain the exclusive property of <strong>Eitan &amp; Meir GmbH</strong>. This Agreement does not grant you any ownership rights.</p>
+
+  <h2>3. Subscriptions</h2>
+  <p>The App may offer <strong>auto-renewable subscriptions</strong>.</p>
+  <h3>Subscription details:</h3>
+  <ul>
+    <li><strong>Title:</strong> eltrm Premium Subscription (name may vary in App Store)</li>
+    <li><strong>Length:</strong> Monthly, 6 Months, or Annual</li>
+    <li><strong>Price:</strong> Displayed in the App Store at the time of purchase</li>
+  </ul>
+  <h3>Billing and Renewal:</h3>
+  <ul>
+    <li>Payment will be charged to your Apple ID at confirmation of purchase.</li>
+    <li>Subscriptions automatically renew unless auto-renew is turned off at least 24 hours before the end of the current period.</li>
+    <li>Your account will be charged for renewal within 24 hours prior to the end of the current period.</li>
+    <li>You can manage or cancel your subscription in your <strong>Apple ID Account Settings</strong>.</li>
+  </ul>
+  <p>No refunds are provided for unused portions of a subscription period.</p>
+
+  <h2>4. User Obligations</h2>
+  <p>You agree not to:</p>
+  <ul>
+    <li>Reverse engineer, decompile, or disassemble the App</li>
+    <li>Use the App for unlawful purposes</li>
+    <li>Circumvent security or access restrictions</li>
+  </ul>
+
+  <h2>5. Data &amp; Privacy</h2>
+  <p>Your use of the App is also governed by our <strong>Privacy Policy</strong>, available at: <a href="https://eltrm.com/privacy/">https://eltrm.com/privacy/</a></p>
+
+  <h2>6. Third-Party Services</h2>
+  <p>The App may interact with third-party services. We are not responsible for the content, policies, or practices of third-party services.</p>
+
+  <h2>7. Disclaimer of Warranties</h2>
+  <p>The App is provided <strong>"as is" and "as available"</strong>, without warranties of any kind, express or implied.</p>
+
+  <h2>8. Limitation of Liability</h2>
+  <p>To the maximum extent permitted by law, <strong>Eitan &amp; Meir GmbH</strong> shall not be liable for any indirect, incidental, or consequential damages arising from the use of the App.</p>
+
+  <h2>9. Termination</h2>
+  <p>This Agreement is effective until terminated. We may terminate or suspend access to the App at any time if you violate this Agreement.</p>
+
+  <h2>10. Governing Law</h2>
+  <p>This Agreement shall be governed by and construed in accordance with the laws of <strong>Germany</strong>, excluding conflict of law principles.</p>
+
+  <h2>11. Apple Standard EULA Acknowledgement</h2>
+  <p>This Agreement is between you and <strong>Eitan &amp; Meir GmbH</strong>, not Apple. Apple is not responsible for the App or its content. Apple has no obligation to provide maintenance or support services for the App.</p>
+
+  <h2>12. Contact Information</h2>
+  <p>For questions or support, contact:</p>
+  <address>
+    <strong>Eitan &amp; Meir GmbH</strong><br />
+    Marienfelder Allee 195f, 12279 Berlin, Germany<br />
+    Email: <a href="mailto:info@eltrm.com">info@eltrm.com</a>
+  </address>
+
+  <p>By using the App, you acknowledge that you have read and understood this Agreement.</p>
+  <p><em>Note: The EULA is currently only available in English. For a translated summary, please contact <a href="mailto:info@eltrm.com">info@eltrm.com</a>.</em></p>
+</LegalLayout>
+
+<style is:global>
+  .legal-inner h1 { font-size: 1.75rem; margin-bottom: var(--space-3); }
+  .legal-inner h2 { font-size: 1.25rem; margin: var(--space-8) 0 var(--space-3); color: #111; }
+  .legal-inner h3 { font-size: 1rem; margin: var(--space-4) 0 var(--space-2); color: #333; }
+  .legal-inner p { color: #444; line-height: 1.75; margin-bottom: var(--space-4); }
+  .legal-inner ul, .legal-inner ol { padding-left: var(--space-6); margin-bottom: var(--space-4); }
+  .legal-inner li { color: #444; line-height: 1.7; margin-bottom: var(--space-2); }
+  .legal-inner address { font-style: normal; background: #f5f6f8; border-radius: var(--radius-lg); padding: var(--space-6); line-height: 2; margin-bottom: var(--space-6); color: #444; }
+  .legal-inner hr { border: none; border-top: 1px solid #eee; margin: var(--space-8) 0; }
+</style>
