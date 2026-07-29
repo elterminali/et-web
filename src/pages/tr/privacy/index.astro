@@ -1,0 +1,44 @@
+---
+import LegalLayout from '../../../layouts/LegalLayout.astro';
+import { t } from '../../../i18n/config';
+const locale = 'tr'; const i18n = t(locale);
+---
+<LegalLayout locale={locale} title={i18n.meta.privacyTitle} description={i18n.meta.privacyDescription} canonicalPath="/privacy/" lastUpdated="1 Nisan 2016">
+  <h1>Gizlilik Politikası</h1>
+  <p><strong>eltrm</strong> (Eitan &amp; Meir GmbH tarafından geliştirilmiştir) sizin bilgilerinizin gizliliğine saygı gösteriyor. Bu gizlilik sözleşmesi 01 Nisan 2016 tarihinden itibaren geçerlidir ve kullanıcılarımızın bize bildirdikleri bilgilerinin nasıl alındığını ve kullanıldığını açıklamaktadır ve size hizmetlerimizi kullanma kararı verirken yardımcı olacaktır. Uygulamanın kullanıldığı tüm ortamlar (iOS, Android ve web) için geçerlidir.</p>
+  <p><em><strong>Not:</strong> Bu politika güncellenmesi gereken bir belgedir. Sorularınız için <a href="mailto:info@eltrm.com">info@eltrm.com</a> ile iletişime geçin.</em></p>
+
+  <h2>Bu gizlilik sözleşmesi şu konuları kapsamaktadır</h2>
+  <ul>
+    <li>Sizden hangi bilgileri aldığımızı</li>
+    <li>Sizden aldığımız bilgileri nasıl kullandığımızı</li>
+    <li>Sizden alınan bilgilerin korunması için ne gibi önlemler alındığı</li>
+    <li>Sizden alınan ve bizim kontrolümüz altında olan bilgilerin kaybolması, amaç dışı kullanımı durumları</li>
+  </ul>
+
+  <h2>Bilgi Toplama</h2>
+  <p>eltrm sizden farklı yöntemlerle bilgi toplayabilir. Sunucu kayıtları bu yöntemlerden ilkidir. Sunucu kayıtları kullanılarak tarayıcı tipi, ISP, IP adresi, hangi siteden sitemize gelip hangi siteye gittiğiniz, kullandığınız servis ve bu servisi hangi platformda kullandığınız, sayfa görüntüleme sayısı ve tıklama sayısı gibi bilgiler tüm kullanıcılarımızdan toplanmaktadır. Sitemiz ayrıca standart bir teknoloji olan çerezleri de kullanmaktadır. Çerezlerden görüntülenen sayfalar, sitede geçirilen zaman gibi bilgiler toplanabilmektedir. Bu tip bilgiler hiçbir kullanıcı ile doğrudan ilişkilendirilmemekte, site ve/veya uygulamaların kullanımı ile ilgili istatistiksel bilgiler için kullanılmaktadır. eltrm sunucu kayıtlarını kişisel bilgilerle ilişkilendirme hakkını saklı tutmaktadır.</p>
+  <p>eltrm tarafından toplanan kişisel bilgiler bir sonraki paragrafta anlatılmaktadır. Bu bilgilerin muhtemel kullanım yöntemleri de yine aşağıda anlatılacaktır. Bilgilerin toplanması ile ilgili ikinci yöntem, servisimize kayıt esnasında sizden kişisel bilgilerin alınmasıdır. Kayıt sırasında sizden isim, soy isim, e-posta adresi ve şifre bilgileri alınmaktadır. Bu gibi bilgiler tarafımızdan güvenli bir şekilde saklanmakta ve sizin izniniz olmadan başka kimseyle paylaşılmamaktadır. Son olarak da sitemizi ya da uygulamalarımızı kullandığınız sürece oluşacak kullanım verileriniz tarafımızca toplanacak ve tamamen güvenli ortamlarda saklanacaktır.</p>
+
+  <h2>Servis hizmetleri ile ilgili iletişime geçilmesi durumu</h2>
+  <p>Sizinle kişisel bilgilerinizi kullanarak hizmetlerimizle ilgili bilgilendirme yapmak ya da yaşadığınız sorunları çözmek amacıyla iletişime geçebiliriz. Bu iletişimi sonlandırmak için sistematik olarak yapabileceğiniz bir işlem bulunmamaktadır. Ancak bizimle temasa geçerek artık bu şekilde iletişime geçilmesini istemediğinizi belirtebilirsiniz.</p>
+
+  <h2>Kişisel bilgilerin kullanımı</h2>
+  <p>eltrm, kişisel bilgilerinizi hizmetlerimizi sunmak ve geliştirmek ve yukarıda açıklandığı şekilde sizinle iletişim kurmak için kullanır. Kişisel bilgilerinizi, hizmetlerimizi sunmak için gerekli olmadıkça veya yasaların gerektirdiği durumlar dışında üçüncü taraflarla satmaz veya paylaşmayız.</p>
+
+  <h2>İletişim</h2>
+  <address>
+    <strong>Eitan &amp; Meir GmbH</strong><br />
+    Marienfelder Allee 195f, 12279 Berlin, Almanya<br />
+    E-posta: <a href="mailto:info@eltrm.com">info@eltrm.com</a>
+  </address>
+</LegalLayout>
+
+<style is:global>
+  .legal-inner h1 { font-size: 1.75rem; margin-bottom: var(--space-3); }
+  .legal-inner h2 { font-size: 1.25rem; margin: var(--space-8) 0 var(--space-3); color: #111; }
+  .legal-inner p { color: #444; line-height: 1.75; margin-bottom: var(--space-4); }
+  .legal-inner ul { padding-left: var(--space-6); margin-bottom: var(--space-4); }
+  .legal-inner li { color: #444; line-height: 1.7; margin-bottom: var(--space-2); }
+  .legal-inner address { font-style: normal; background: #f5f6f8; border-radius: var(--radius-lg); padding: var(--space-6); line-height: 2; margin-bottom: var(--space-6); color: #444; }
+</style>

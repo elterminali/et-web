@@ -1,0 +1,111 @@
+---
+import type { Locale } from '../../i18n/config';
+import { t } from '../../i18n/config';
+
+interface Props {
+  locale: Locale;
+  /** If true, render a compact version (no section wrapper) */
+  compact?: boolean;
+}
+
+const { locale, compact = false } = Astro.props;
+const i18n = t(locale);
+const f = i18n.faq;
+
+const items = [
+  { q: f.q1Question, a: f.q1Answer },
+  { q: f.q2Question, a: f.q2Answer },
+  { q: f.q3Question, a: f.q3Answer },
+  { q: f.q4Question, a: f.q4Answer },
+  { q: f.q5Question, a: f.q5Answer },
+  { q: f.q6Question, a: f.q6Answer },
+  { q: f.q7Question, a: f.q7Answer },
+  { q: f.q8Question, a: f.q8Answer },
+];
+---
+{compact ? (
+  <div class="faq-list">
+    {items.map(({ q, a }) => (
+      <details class="faq-item">
+        <summary>{q}</summary>
+        <div class="faq-answer">{a}</div>
+      </details>
+    ))}
+  </div>
+) : (
+  <section class="faq section" id="faq">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-badge" aria-hidden="true">{f.badge}</span>
+        <h2 class="section-title">{f.title}</h2>
+        <p class="section-description">{f.description}</p>
+      </div>
+      <div class="faq-list">
+        {items.map(({ q, a }) => (
+          <details class="faq-item">
+            <summary>{q}</summary>
+            <div class="faq-answer">{a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .faq { background: #fafafa; }
+
+  .faq-list {
+    max-width: 760px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .faq-item {
+    background: #fff;
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+
+  .faq-item summary {
+    padding: var(--space-5) var(--space-6);
+    font-weight: 600;
+    font-size: 1rem;
+    color: #1a1a1a;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    transition: background 0.15s ease;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary:hover { background: rgba(0,122,255,0.04); }
+  .faq-item summary::after {
+    content: '+';
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--blue);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+    line-height: 1;
+  }
+  .faq-item[open] summary::after {
+    transform: rotate(45deg);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .faq-item summary::after { transition: none; }
+  }
+
+  .faq-answer {
+    padding: 0 var(--space-6) var(--space-5);
+    color: #555;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+</style>

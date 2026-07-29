@@ -1,0 +1,46 @@
+---
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { t } from '../../i18n/config';
+const locale = 'en'; const i18n = t(locale);
+---
+<LegalLayout locale={locale} title={i18n.meta.privacyTitle} description={i18n.meta.privacyDescription} canonicalPath="/privacy/" lastUpdated="April 1, 2016">
+  <h1>Privacy Policy</h1>
+  <p><strong>eltrm</strong> (developed by Eitan &amp; Meir GmbH) respects the privacy of your information. This privacy policy has been effective since April 1, 2016 and describes how we collect and use information provided by our users, and will help you make informed decisions when using our services. It applies to all platforms on which the application is used (iOS, Android, and web).</p>
+  <p><em><strong>Note:</strong> This policy is due for update. See <a href="mailto:info@eltrm.com">info@eltrm.com</a> for questions.</em></p>
+
+  <h2>This privacy policy covers</h2>
+  <ul>
+    <li>What information we collect from you</li>
+    <li>How we use the information we collect from you</li>
+    <li>What measures are taken to protect the information collected from you</li>
+    <li>Cases of loss or misuse of information collected from you and under our control</li>
+  </ul>
+
+  <h2>Information Collection</h2>
+  <p>eltrm may collect information from you in different ways. Server logs are one such method. Using server logs, information such as browser type, ISP, IP address, referring and exit pages, services used and the platform on which they are used, page views, and click counts are collected from all of our users. Our site also uses cookies, a standard technology. Information such as pages viewed and time spent on the site can be collected through cookies. This type of information is not directly associated with any user and is used for statistical information about the use of the site and/or applications. eltrm reserves the right to associate server logs with personal information.</p>
+
+  <p>Personal information collected by eltrm is described in the following paragraph. Potential uses of this information are also described below. The second method of information collection is the collection of personal information from you during registration for our service. During registration, name, surname, email address, and password information are collected from you. This information is stored securely by us and is not shared with anyone without your permission. Finally, usage data generated while you use our site or applications will be collected by us and stored in completely secure environments.</p>
+
+  <h2>Contact for service-related communication</h2>
+  <p>We may contact you using your personal information to inform you about our services or to resolve problems you experience. To stop this contact, there is no systematic action you can take. However, you can contact us and state that you no longer wish to be contacted this way.</p>
+
+  <h2>Use of personal information</h2>
+  <p>eltrm uses your personal information to provide and improve our services and to contact you as described above. We do not sell or share your personal information with third parties except as necessary to provide our services or as required by law.</p>
+
+  <h2>Contact</h2>
+  <address>
+    <strong>Eitan &amp; Meir GmbH</strong><br />
+    Marienfelder Allee 195f, 12279 Berlin, Germany<br />
+    Email: <a href="mailto:info@eltrm.com">info@eltrm.com</a>
+  </address>
+</LegalLayout>
+
+<style is:global>
+  .legal-inner h1 { font-size: 1.75rem; margin-bottom: var(--space-3); }
+  .legal-inner h2 { font-size: 1.25rem; margin: var(--space-8) 0 var(--space-3); color: #111; }
+  .legal-inner h3 { font-size: 1rem; margin: var(--space-4) 0 var(--space-2); color: #333; }
+  .legal-inner p { color: #444; line-height: 1.75; margin-bottom: var(--space-4); }
+  .legal-inner ul, .legal-inner ol { padding-left: var(--space-6); margin-bottom: var(--space-4); }
+  .legal-inner li { color: #444; line-height: 1.7; margin-bottom: var(--space-2); }
+  .legal-inner address { font-style: normal; background: #f5f6f8; border-radius: var(--radius-lg); padding: var(--space-6); line-height: 2; margin-bottom: var(--space-6); color: #444; }
+</style>

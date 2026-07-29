@@ -1,0 +1,66 @@
+---
+import type { Locale } from '../i18n/config';
+import { t } from '../i18n/config';
+import SeoHead from '../components/astro/SeoHead.astro';
+import Header from '../components/astro/Header.astro';
+import Footer from '../components/astro/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  canonicalPath: string;
+  noindex?: boolean;
+  lastUpdated?: string;
+}
+
+const { locale, title, description, canonicalPath, noindex, lastUpdated } = Astro.props;
+const i18n = t(locale);
+---
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SeoHead
+      title={title}
+      description={description}
+      locale={locale}
+      canonicalPath={canonicalPath}
+      noindex={noindex}
+    />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">{i18n.nav.skipToContent}</a>
+    <Header locale={locale} />
+    <main id="main-content" tabindex="-1" class="legal-main">
+      <div class="legal-inner">
+        <slot />
+        {lastUpdated && (
+          <p class="legal-updated">Last updated: {lastUpdated}</p>
+        )}
+      </div>
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>
+
+<style>
+  .legal-main {
+    padding-top: calc(var(--nav-height) + var(--space-12));
+    padding-bottom: var(--space-16);
+    min-height: 100vh;
+    background: #fff;
+  }
+  .legal-inner {
+    max-width: 720px;
+    margin-inline: auto;
+    padding-inline: var(--space-6);
+  }
+  .legal-updated {
+    margin-top: var(--space-8);
+    font-size: 0.875rem;
+    color: #888;
+  }
+</style>

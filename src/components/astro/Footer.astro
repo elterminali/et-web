@@ -1,0 +1,127 @@
+---
+import type { Locale } from '../../i18n/config';
+import { t, localePath } from '../../i18n/config';
+import { SITE } from '../../config/site';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const i18n = t(locale);
+---
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href={localePath(locale, '/')} class="footer-logo" aria-label={i18n.a11y.logoAlt}>
+          <img
+            src="/assets/img/logo-small.png"
+            alt={i18n.a11y.logoSmallAlt}
+            width="32"
+            height="32"
+            loading="lazy"
+          />
+          <span>eltrm</span>
+        </a>
+        <p>{i18n.footer.description}</p>
+        <p class="footer-company">{i18n.footer.developedBy}</p>
+        <a href={`mailto:${SITE.email}`} class="footer-email">{SITE.email}</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>{i18n.footer.productHeading}</h4>
+        <ul role="list">
+          <li><a href={localePath(locale, '/features/')}>{i18n.nav.features}</a></li>
+          <li><a href={localePath(locale, '/plans/')}>{i18n.nav.plans}</a></li>
+          <li><a href={localePath(locale, '/download/')}>{i18n.nav.download}</a></li>
+          <li><a href="https://app.eltrm.com" rel="noopener noreferrer">{i18n.nav.openWebApp}</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>{i18n.footer.resourcesHeading}</h4>
+        <ul role="list">
+          <li><a href={localePath(locale, '/docs/')}>{i18n.nav.docs}</a></li>
+          <li><a href={localePath(locale, '/support/')}>{i18n.nav.support}</a></li>
+          <li><a href={localePath(locale, '/delete-account/')}>{i18n.footer.deleteAccountLink}</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>{i18n.footer.legalHeading}</h4>
+        <ul role="list">
+          <li><a href={localePath(locale, '/privacy/')}>{i18n.footer.privacyLink}</a></li>
+          <li><a href={localePath(locale, '/terms/')}>{i18n.footer.termsLink}</a></li>
+          <li>
+            <a href="/eula/">
+              {i18n.footer.eulaLink}
+              {locale !== 'en' && <span class="eula-lang-note"> (EN)</span>}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">{i18n.footer.copyright}</p>
+      <div class="footer-contact">
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        &mdash; {SITE.company}, {SITE.address.street}, {SITE.address.postalCode} {SITE.address.city}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--gradient-hero);
+    color: rgba(255,255,255,0.8);
+    padding: var(--space-16) var(--space-6) var(--space-8);
+  }
+  .footer-inner { max-width: var(--max-content); margin-inline: auto; }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--space-8);
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: var(--space-6);
+  }
+
+  .footer-logo {
+    display: flex; align-items: center; gap: var(--space-2);
+    text-decoration: none; color: #fff;
+    font-weight: 700; font-size: 1.125rem;
+    margin-bottom: var(--space-4);
+  }
+  .footer-logo:hover { text-decoration: none; }
+  .footer-logo img { border-radius: var(--radius-sm); }
+
+  .footer-brand p { font-size: 0.9rem; line-height: 1.6; margin-bottom: var(--space-2); }
+  .footer-company { color: rgba(255,255,255,0.5); font-size: 0.8125rem !important; }
+  .footer-email { color: rgba(255,255,255,0.7); font-size: 0.875rem; text-decoration: none; }
+  .footer-email:hover { color: #fff; }
+
+  .footer-col h4 { color: #fff; font-size: 0.875rem; font-weight: 700; margin-bottom: var(--space-4); }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+  .footer-col a { color: rgba(255,255,255,0.6); font-size: 0.875rem; text-decoration: none; transition: color 0.15s ease; }
+  .footer-col a:hover { color: #fff; }
+
+  .eula-lang-note { font-size: 0.75rem; opacity: 0.7; }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: var(--space-4);
+  }
+  .footer-copyright { color: rgba(255,255,255,0.4); font-size: 0.8125rem; }
+  .footer-contact { color: rgba(255,255,255,0.4); font-size: 0.8125rem; }
+  .footer-contact a { color: rgba(255,255,255,0.5); text-decoration: none; }
+  .footer-contact a:hover { color: #fff; }
+
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>

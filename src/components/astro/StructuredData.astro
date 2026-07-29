@@ -1,0 +1,105 @@
+---
+/**
+ * Renders JSON-LD structured data.
+ * Rules:
+ * - Organization and WebSite always included on canonical pages
+ * - SoftwareApplication/MobileApplication: no aggregateRating (unverified)
+ * - FAQPage: only injected by pages that render a visible FAQ section
+ * - No SearchAction, no Product with fake ratings
+ */
+import type { Locale } from '../../i18n/config';
+import { SITE } from '../../config/site';
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  locale: Locale;
+  includeSoftwareApp?: boolean;
+  faqItems?: FAQItem[];
+}
+
+const { locale, includeSoftwareApp = false, faqItems } = Astro.props;
+
+const localePrefix = locale === 'en' ? '' : `/${locale}`;
+const pageUrl = `${SITE.url}${localePrefix}/`;
+
+const orgSchema = {
+  '@type': 'Organization',
+  '@id': `${SITE.url}/#organization`,
+  name: SITE.name,
+  legalName: SITE.company,
+  url: SITE.url,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${SITE.url}/assets/img/logo.png`,
+    width: 512,
+    height: 512,
+  },
+  image: `${SITE.url}/assets/img/logo.png`,
+  email: SITE.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.address.street,
+    addressLocality: SITE.address.city,
+    postalCode: SITE.address.postalCode,
+    addressCountry: SITE.address.country,
+  },
+};
+
+const websiteSchema = {
+  '@type': 'WebSite',
+  '@id': `${SITE.url}/#website`,
+  url: SITE.url,
+  name: `${SITE.name} — inventory management`,
+  publisher: { '@id': `${SITE.url}/#organization` },
+  inLanguage: ['en', 'tr', 'de'],
+};
+
+const mobileAppSchema = {
+  '@type': 'MobileApplication',
+  '@id': `${SITE.url}/#mobileapp`,
+  name: 'eltrm',
+  operatingSystem: 'ANDROID, iOS',
+  applicationCategory: 'BusinessApplication',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  description:
+    'Inventory management app for iOS and Android. Barcode scanning, lot and expiration tracking, multi-warehouse management.',
+  installUrl: [SITE.appStore.ios, SITE.appStore.android],
+  author: { '@id': `${SITE.url}/#organization` },
+  inLanguage: ['en', 'tr', 'de', 'ar'],
+};
+
+const webAppSchema = {
+  '@type': 'SoftwareApplication',
+  '@id': `${SITE.url}/#webapp`,
+  name: 'eltrm',
+  operatingSystem: 'Web',
+  applicationCategory: 'BusinessApplication',
+  url: SITE.webAppUrl,
+  browserRequirements: 'Requires JavaScript. Requires HTML5.',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  author: { '@id': `${SITE.url}/#organization` },
+};
+
+const graph: object[] = [orgSchema, websiteSchema];
+if (includeSoftwareApp) {
+  graph.push(mobileAppSchema, webAppSchema);
+}
+
+if (faqItems && faqItems.length > 0) {
+  graph.push({
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  });
+}
+
+const schema = { '@context': 'https://schema.org', '@graph': graph };
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -1,0 +1,58 @@
+---
+import type { Locale } from '../i18n/config';
+import { t } from '../i18n/config';
+import SeoHead from '../components/astro/SeoHead.astro';
+import StructuredData from '../components/astro/StructuredData.astro';
+import Header from '../components/astro/Header.astro';
+import Footer from '../components/astro/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  canonicalPath: string;
+  noindex?: boolean;
+  includeSoftwareApp?: boolean;
+  faqItems?: Array<{ question: string; answer: string }>;
+}
+
+const {
+  locale,
+  title,
+  description,
+  canonicalPath,
+  noindex,
+  includeSoftwareApp,
+  faqItems,
+} = Astro.props;
+
+const i18n = t(locale);
+---
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SeoHead
+      title={title}
+      description={description}
+      locale={locale}
+      canonicalPath={canonicalPath}
+      noindex={noindex}
+    />
+    <StructuredData
+      locale={locale}
+      includeSoftwareApp={includeSoftwareApp}
+      faqItems={faqItems}
+    />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">{i18n.nav.skipToContent}</a>
+    <Header locale={locale} />
+    <main id="main-content" tabindex="-1">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

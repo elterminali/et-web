@@ -1,0 +1,64 @@
+---
+import MarketingLayout from '../../layouts/MarketingLayout.astro';
+import { t } from '../../i18n/config';
+import { SITE } from '../../config/site';
+const locale = 'en'; const i18n = t(locale); const s = i18n.support;
+---
+<MarketingLayout locale={locale} title={i18n.meta.supportTitle} description={i18n.meta.supportDescription} canonicalPath="/support/">
+  <section class="section" style="padding-top:calc(var(--nav-height)+var(--space-12));background:#fafafa;min-height:100vh">
+    <div class="section-inner" style="max-width:800px">
+      <div class="section-header">
+        <h1 class="section-title">{s.title}</h1>
+        <p class="section-description">{s.subtitle}</p>
+      </div>
+      <a href={`mailto:${SITE.email}`} class="contact-card">
+        <div class="contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <div>
+          <strong>{s.emailCardTitle}</strong>
+          <p>{s.emailCardDescription}</p>
+          <span class="contact-cta">{s.emailCardCta}</span>
+        </div>
+      </a>
+      <h2 style="font-size:1.5rem;margin:var(--space-12) 0 var(--space-6)">{s.faqTitle}</h2>
+      <div class="faq-list">
+        {[
+          [s.faq1Q, s.faq1A],
+          [s.faq2Q, s.faq2A],
+          [s.faq3Q, s.faq3A],
+          [s.faq4Q, s.faq4A],
+        ].map(([q,a]) => (
+          <details class="faq-item">
+            <summary>{q}</summary>
+            <div class="faq-answer">{a}</div>
+          </details>
+        ))}
+      </div>
+      <div class="help-cta">
+        <h3>{s.stillNeedHelp}</h3>
+        <p>{s.stillNeedHelpDescription}</p>
+        <a href={`mailto:${SITE.email}`} class="btn btn-primary">{s.stillNeedHelpCta}</a>
+      </div>
+    </div>
+  </section>
+</MarketingLayout>
+<style>
+  .contact-card { display:flex;gap:var(--space-4);background:#fff;border-radius:var(--radius-2xl);padding:var(--space-6);border:1px solid rgba(0,0,0,.07);box-shadow:var(--shadow-sm);text-decoration:none;color:inherit;transition:box-shadow .2s ease; }
+  .contact-card:hover { box-shadow:var(--shadow-md); text-decoration:none; }
+  .contact-icon { width:52px;height:52px;background:rgba(0,122,255,0.1);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+  .contact-icon svg { width:24px;height:24px;color:var(--blue); }
+  .contact-card strong { display:block;font-size:1.1rem;font-weight:700;color:#1a1a1a;margin-bottom:4px; }
+  .contact-card p { color:#666;font-size:.9rem;margin-bottom:6px; }
+  .contact-cta { color:var(--blue);font-size:.9rem;font-weight:600; }
+  .faq-list { display:flex;flex-direction:column;gap:var(--space-2); }
+  .faq-item { background:#fff;border-radius:var(--radius-xl);border:1px solid rgba(0,0,0,.06);overflow:hidden; }
+  .faq-item summary { padding:var(--space-5) var(--space-6);font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:var(--space-4); }
+  .faq-item summary::-webkit-details-marker { display:none; }
+  .faq-item summary::after { content:'+';font-size:1.25rem;color:var(--blue);flex-shrink:0; }
+  .faq-item[open] summary::after { content:'−'; }
+  .faq-answer { padding:0 var(--space-6) var(--space-5);color:#555;font-size:.9375rem;line-height:1.7;border-top:1px solid rgba(0,0,0,.05); }
+  .help-cta { margin-top:var(--space-12);background:#fff;border-radius:var(--radius-2xl);padding:var(--space-8);text-align:center;border:1px solid rgba(0,0,0,.07); }
+  .help-cta h3 { font-size:1.25rem;margin-bottom:var(--space-3); }
+  .help-cta p { color:#666;margin-bottom:var(--space-6); }
+</style>

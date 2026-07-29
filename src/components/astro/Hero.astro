@@ -1,0 +1,260 @@
+---
+import type { Locale } from '../../i18n/config';
+import { t, localePath } from '../../i18n/config';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const i18n = t(locale);
+---
+<section class="hero" aria-label={i18n.hero.tagline}>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="hero-tagline">
+        <span class="hero-dot" aria-hidden="true">●</span>
+        {i18n.hero.tagline}
+      </p>
+      <h1 class="hero-title">{i18n.hero.title}</h1>
+      <p class="hero-description">{i18n.hero.description}</p>
+      <div class="hero-ctas">
+        <a href="https://app.eltrm.com" class="btn btn-primary" rel="noopener noreferrer">
+          {i18n.hero.ctaWebApp}
+        </a>
+        <a href={localePath(locale, '/download/')} class="btn btn-secondary">
+          {i18n.hero.ctaDownload}
+        </a>
+        <a href="#how-it-works" class="btn btn-ghost hero-link">
+          {i18n.hero.ctaHowItWorks}
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Illustrative phone mockup — no real screenshots until provided -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="app-ui">
+            <div class="app-header">
+              <div class="app-logo">
+                <img src="/assets/img/logo-small.png" alt="" width="32" height="32" loading="eager" />
+              </div>
+              <div class="app-title-bar">
+                <div class="app-title-placeholder"></div>
+                <div class="app-subtitle-placeholder"></div>
+              </div>
+            </div>
+            <div class="app-stats">
+              <div class="stat-card stat-blue">
+                <div class="stat-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/>
+                    <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+                  </svg>
+                </div>
+                <div class="stat-label-line"></div>
+                <div class="stat-value-line"></div>
+              </div>
+              <div class="stat-card stat-green">
+                <div class="stat-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                  </svg>
+                </div>
+                <div class="stat-label-line"></div>
+                <div class="stat-value-line"></div>
+              </div>
+            </div>
+            <div class="app-list">
+              {[0,1,2,3].map(i => (
+                <div class="list-row" style={`opacity: ${1 - i * 0.15}`}>
+                  <div class="list-barcode"></div>
+                  <div class="list-text">
+                    <div class="list-name"></div>
+                    <div class="list-sub"></div>
+                  </div>
+                  <div class="list-qty"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="visuals-note">
+        <em>Real product screenshots pending</em>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    background: var(--gradient-hero);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: calc(var(--nav-height) + var(--space-12)) var(--space-6) var(--space-16);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 70% 30%, rgba(0,122,255,0.15) 0%, transparent 55%),
+      radial-gradient(circle at 20% 70%, rgba(175,82,222,0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: var(--max-content);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .hero-tagline {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--cyan);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+  .hero-dot { font-size: 0.5rem; animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+  @media (prefers-reduced-motion: reduce) { .hero-dot { animation: none; } }
+
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: var(--space-6);
+  }
+
+  .hero-description {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: var(--space-8);
+    max-width: 520px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: center;
+  }
+
+  .hero-link { color: rgba(255,255,255,0.8) !important; gap: var(--space-1); }
+  .hero-link:hover { color: #fff !important; }
+
+  /* Phone mockup */
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .phone-frame {
+    width: 260px;
+    height: 520px;
+    background: #111;
+    border-radius: 36px;
+    padding: 10px;
+    box-shadow: var(--shadow-xl), 0 0 0 1px rgba(255,255,255,0.08);
+    position: relative;
+  }
+  .phone-frame::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 24px;
+    background: #111;
+    border-radius: 0 0 14px 14px;
+    z-index: 10;
+  }
+
+  .phone-screen {
+    width: 100%;
+    height: 100%;
+    background: #f5f6f8;
+    border-radius: 28px;
+    overflow: hidden;
+  }
+
+  .app-ui { padding: 48px 12px 12px; display: flex; flex-direction: column; gap: 10px; }
+
+  .app-header { display: flex; align-items: center; gap: 8px; }
+  .app-logo img { border-radius: 8px; }
+  .app-title-bar { flex: 1; }
+  .app-title-placeholder { height: 10px; width: 70%; background: #ddd; border-radius: 4px; margin-bottom: 4px; }
+  .app-subtitle-placeholder { height: 8px; width: 50%; background: #eee; border-radius: 4px; }
+
+  .app-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stat-card {
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .stat-blue { background: rgba(0,122,255,0.12); }
+  .stat-green { background: rgba(52,199,89,0.12); }
+  .stat-icon { width: 24px; height: 24px; }
+  .stat-blue .stat-icon { color: var(--blue); }
+  .stat-green .stat-icon { color: var(--green); }
+  .stat-label-line { height: 7px; width: 60%; background: #ddd; border-radius: 3px; }
+  .stat-value-line { height: 10px; width: 40%; background: #ccc; border-radius: 3px; }
+
+  .app-list { display: flex; flex-direction: column; gap: 6px; }
+  .list-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .list-barcode { width: 20px; height: 20px; background: #ddd; border-radius: 3px; flex-shrink: 0; }
+  .list-text { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+  .list-name { height: 8px; background: #ddd; border-radius: 3px; width: 75%; }
+  .list-sub { height: 6px; background: #eee; border-radius: 3px; width: 50%; }
+  .list-qty { width: 24px; height: 20px; background: rgba(0,122,255,0.12); border-radius: 4px; flex-shrink: 0; }
+
+  .visuals-note {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero-description { margin-inline: auto; }
+    .hero-ctas { justify-content: center; }
+    .hero-visual { order: -1; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-ctas { flex-direction: column; width: 100%; }
+    .hero-ctas .btn { width: 100%; }
+    .phone-frame { width: 220px; height: 440px; }
+  }
+</style>

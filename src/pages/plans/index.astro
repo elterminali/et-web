@@ -1,0 +1,9 @@
+---
+import MarketingLayout from '../../layouts/MarketingLayout.astro';
+import PlansComparison from '../../components/astro/PlansComparison.astro';
+import { t } from '../../i18n/config';
+const locale = 'en'; const i18n = t(locale);
+---
+<MarketingLayout locale={locale} title={i18n.meta.plansTitle} description={i18n.meta.plansDescription} canonicalPath="/plans/">
+  <div style="padding-top: var(--nav-height)"><PlansComparison locale={locale} /></div>
+</MarketingLayout>
