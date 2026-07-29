@@ -51,7 +51,6 @@ Items flagged during the Astro rebuild that require legal review before the site
 
 **Action required:** Once privacy policy is updated and legal review completed, this claim may be reconsidered.
 
----
 
 ## 5. Spanish privacy page (`/tr/privacy/index-es.html`)
 
