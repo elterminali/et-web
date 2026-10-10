@@ -11,7 +11,7 @@ export const de: Translations = {
       'Barcode-Scanning, Chargenverfolgung, Ablaufdaten, Multi-Lager-Verwaltung, Berichte und mehr. Entdecken Sie alle eltrm-Funktionen.',
     plansTitle: 'Pläne & Funktionen — eltrm',
     plansDescription:
-      'Starten Sie kostenlos mit dem Kern-Inventarmanagement. Wechseln Sie zu Premium für Chargenverfolgung, Massenimport, benutzerdefinierte Felder und unbegrenzte Lager.',
+      'Starten Sie kostenlos mit dem Kern-Inventarmanagement und Excel-Import für bis zu 100 Produkte. Wechseln Sie zu Premium für Chargenverfolgung, unbegrenzten Import, benutzerdefinierte Felder und unbegrenzte Lager.',
     downloadTitle: 'eltrm herunterladen',
     downloadDescription:
       'Holen Sie sich eltrm für iOS, Android oder nutzen Sie die Web-App unter app.eltrm.com. Verwalten Sie Ihr Inventar von überall.',
@@ -52,7 +52,7 @@ export const de: Translations = {
     title: 'Was ist auf Lager, wo es sich befindet und wann es abläuft.',
     description:
       'Barcodes scannen, Chargen und Ablaufdaten lagerübergreifend verfolgen und Ihr Inventar mobil oder im Web verwalten.',
-    ctaWebApp: 'Web-App öffnen',
+    ctaWebApp: 'Kostenlos starten',
     ctaDownload: 'App herunterladen',
     ctaHowItWorks: 'So funktioniert es',
     mockupAlt: 'Illustration der eltrm-App-Benutzeroberfläche',
@@ -106,7 +106,7 @@ export const de: Translations = {
       'Zeigen Sie Dashboard-Metriken, Transaktionszusammenfassungen nach Zeitraum, Inventarstatus je Lager und Bestand nach Kategorie an. Exportieren Sie Berichte als CSV.',
     importExportTitle: 'Massenimport und -export',
     importExportDescription:
-      'Importieren Sie Produkte aus Excel oder CSV über eine herunterladbare Vorlage. Exportieren Sie Berichte und Transaktionsdaten jederzeit. (Premium für Import)',
+      'Importieren Sie Produkte aus Excel oder CSV über eine herunterladbare Vorlage, im kostenlosen Plan bis zu 100 Produkte. Exportieren Sie Berichte und Transaktionsdaten jederzeit.',
     alertsTitle: 'Niedrigbestandswarnungen',
     alertsDescription:
       'Legen Sie je Produkt einen Mindestlagerbestand fest. Erhalten Sie Benachrichtigungen im Dashboard und in mobilen Alerts, wenn der Bestand unter Ihren Schwellenwert fällt.',
@@ -121,7 +121,7 @@ export const de: Translations = {
     badge: 'Pläne',
     title: 'Kostenlos starten. Upgraden, wenn Sie mehr benötigen.',
     description:
-      'Der kostenlose Plan bietet Ihnen die wichtigsten Tools zur Inventarverwaltung. Premium schaltet Chargenverfolgung, Massenimport und mehr frei – upgraden Sie jederzeit in der App.',
+      'Der kostenlose Plan bietet Ihnen die wichtigsten Tools zur Inventarverwaltung, einschließlich Excel-Import für bis zu 100 Produkte. Premium schaltet Chargenverfolgung, unbegrenzten Import und mehr frei – upgraden Sie jederzeit in der App.',
     freePlanName: 'Kostenlos',
     freePlanDescription: 'Kern-Inventarverwaltung, keine Kreditkarte erforderlich.',
     freeCtaLabel: 'Kostenlos starten',
@@ -130,12 +130,13 @@ export const de: Translations = {
     freePlanFeature3: 'Mehrere Lager',
     freePlanFeature4: 'Niedrigbestandswarnungen',
     freePlanFeature5: 'Berichte und CSV-Export',
+    freePlanFeature6: 'Excel- / CSV-Import für bis zu 100 Produkte',
     premiumPlanName: 'Premium',
     premiumPlanDescription:
       'Alles aus Kostenlos, plus die Funktionen, die ernsthafte Inventaroperationen benötigen.',
     premiumCtaLabel: 'In der App upgraden',
     premiumPlanFeature1: 'Chargen- und Ablaufdatumsverfolgung',
-    premiumPlanFeature2: 'Massenproduktimport (Excel / CSV)',
+    premiumPlanFeature2: 'Unbegrenzter Excel- / CSV-Import',
     premiumPlanFeature3: 'Benutzerdefinierte Produktfelder',
     premiumPlanFeature4: 'Produktkategorien mit Filtern',
     premiumPlanFeature5: 'Mehr Teammitglieder',
@@ -229,7 +230,7 @@ export const de: Translations = {
     faqSubtitle: 'Schnelle Antworten auf die häufigsten Fragen.',
     faq1Q: 'Wie füge ich Produkte hinzu?',
     faq1A:
-      'Navigieren Sie in der Web-App oder mobilen App zu Produkte und tippen Sie auf +. Geben Sie den Produktnamen, Barcode und weitere Details ein. Sie können auch Produkte per Massenimport mit einer Excel- oder CSV-Vorlage importieren (Premium).',
+      'Navigieren Sie in der Web-App oder mobilen App zu Produkte und tippen Sie auf +. Geben Sie den Produktnamen, Barcode und weitere Details ein. Sie können auch bis zu 100 Produkte mit einer Excel- oder CSV-Vorlage importieren. Unbegrenzter Import ist Teil von Premium.',
     faq2Q: 'Wie scanne ich Barcodes?',
     faq2A:
       'Öffnen Sie auf iOS oder Android die App und nutzen Sie die Schaltfläche Scannen auf dem Startbildschirm oder im Transaktionsformular. Die Kamera wird aktiviert und scannt EAN-, UPC- oder QR-Barcodes. In der Web-App können Sie einen USB-Barcode-Scanner verwenden oder Barcodes manuell eingeben.',
@@ -271,7 +272,7 @@ export const de: Translations = {
       'Greifen Sie auf Berichte im Bereich Berichte zu. Exportieren Sie als CSV. Drucken Sie Inventarberichte direkt aus dem Browser.',
     premiumTitle: 'Premium-Funktionen',
     premiumDescription:
-      'Upgraden Sie in der App, um Chargenverfolgung, Massenimport, benutzerdefinierte Produktfelder, Kategorien, mehr Teammitglieder und unbegrenzte Produkte und Lager freizuschalten.',
+      'Upgraden Sie in der App, um Chargenverfolgung, unbegrenzten Import, benutzerdefinierte Produktfelder, Kategorien, mehr Teammitglieder und unbegrenzte Produkte und Lager freizuschalten.',
   },
   notFound: {
     title: 'Seite nicht gefunden',

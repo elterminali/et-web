@@ -2,6 +2,7 @@ export const SITE = {
   name: 'eltrm',
   url: 'https://eltrm.com',
   webAppUrl: 'https://app.eltrm.com',
+  signupUrl: 'https://app.eltrm.com/login?mode=register',
   email: 'info@eltrm.com',
   company: 'Eitan & Meir GmbH',
   address: {

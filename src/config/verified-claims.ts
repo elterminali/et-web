@@ -97,7 +97,7 @@ export const CLAIMS: Record<string, Claim> = {
   bulkImport: {
     id: 'bulkImport',
     status: 'verified',
-    value: 'Bulk import from Excel/CSV (Premium)',
+    value: 'Bulk import from Excel/CSV (free up to the product limit, unlimited on Premium)',
     source: 'eltrm-frontend: ImportStocksModal.tsx, canUseBulkImport in limits.ts',
   },
   lowStockAlerts: {

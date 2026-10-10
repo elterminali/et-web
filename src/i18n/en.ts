@@ -11,7 +11,7 @@ export const en: Translations = {
       'Barcode scanning, lot tracking, expiration dates, multi-warehouse management, reports, and more. Explore all eltrm capabilities.',
     plansTitle: 'Plans & Capabilities — eltrm',
     plansDescription:
-      'Start free with core inventory management. Upgrade to Premium for lot tracking, bulk import, custom fields, and unlimited warehouses.',
+      'Start free with core inventory management and Excel import for up to 100 products. Upgrade to Premium for lot tracking, unlimited import, custom fields, and unlimited warehouses.',
     downloadTitle: 'Download eltrm',
     downloadDescription:
       'Get eltrm on iOS, Android, or use the web app at app.eltrm.com. Manage your inventory from anywhere.',
@@ -52,7 +52,7 @@ export const en: Translations = {
     title: "Know what's in stock, where it is, and when it expires.",
     description:
       'Scan barcodes, track lots and expiration dates across warehouses, and manage your inventory from mobile or web.',
-    ctaWebApp: 'Open Web App',
+    ctaWebApp: 'Start free',
     ctaDownload: 'Download the App',
     ctaHowItWorks: 'See how it works',
     mockupAlt: 'eltrm app interface illustration',
@@ -106,7 +106,7 @@ export const en: Translations = {
       'View dashboard metrics, transaction summaries by date range, inventory status by warehouse, and stock by category. Export reports to CSV.',
     importExportTitle: 'Bulk import and export',
     importExportDescription:
-      'Import products from Excel or CSV using a downloadable template. Export reports and transaction data at any time. (Premium for import)',
+      'Import products from Excel or CSV using a downloadable template, up to 100 products on the free plan. Export reports and transaction data at any time.',
     alertsTitle: 'Low stock alerts',
     alertsDescription:
       'Set a minimum stock level per product. Get notified on the dashboard and in mobile alerts when inventory falls below your threshold.',
@@ -121,7 +121,7 @@ export const en: Translations = {
     badge: 'Plans',
     title: 'Start free. Upgrade when you need more.',
     description:
-      'The free plan gives you the core tools to manage your inventory. Premium unlocks lot tracking, bulk import, and more — upgrade anytime from within the app.',
+      'The free plan gives you the core tools to manage your inventory, including Excel import for up to 100 products. Premium unlocks lot tracking, unlimited import, and more — upgrade anytime from within the app.',
     freePlanName: 'Free',
     freePlanDescription: 'Core inventory management, no credit card required.',
     freeCtaLabel: 'Get started free',
@@ -130,12 +130,13 @@ export const en: Translations = {
     freePlanFeature3: 'Multiple warehouses',
     freePlanFeature4: 'Low stock alerts',
     freePlanFeature5: 'Reports and CSV export',
+    freePlanFeature6: 'Excel / CSV import for up to 100 products',
     premiumPlanName: 'Premium',
     premiumPlanDescription:
       'Everything in Free, plus the features serious inventory operations need.',
     premiumCtaLabel: 'Upgrade in-app',
     premiumPlanFeature1: 'Lot and expiration date tracking',
-    premiumPlanFeature2: 'Bulk product import (Excel / CSV)',
+    premiumPlanFeature2: 'Unlimited Excel / CSV import',
     premiumPlanFeature3: 'Custom product fields',
     premiumPlanFeature4: 'Product categories with filters',
     premiumPlanFeature5: 'More team members',
@@ -229,7 +230,7 @@ export const en: Translations = {
     faqSubtitle: 'Quick answers to the most common questions.',
     faq1Q: 'How do I add products?',
     faq1A:
-      'From the web app or mobile app, navigate to Products and tap the + button. Enter the product name, barcode, and any additional details. You can also import products in bulk using an Excel or CSV template (Premium).',
+      'From the web app or mobile app, navigate to Products and tap the + button. Enter the product name, barcode, and any additional details. You can also import up to 100 products with an Excel or CSV template. Unlimited import is part of Premium.',
     faq2Q: 'How do I scan barcodes?',
     faq2A:
       'On iOS or Android, open the app and use the Scan button on the home screen or transaction form. The camera will activate and scan any EAN, UPC, or QR barcode. On the web app, you can enter barcodes using a USB barcode scanner or type them manually.',
@@ -271,7 +272,7 @@ export const en: Translations = {
       'Access reports from the Reports section. Export to CSV. Print inventory reports directly from the browser.',
     premiumTitle: 'Premium features',
     premiumDescription:
-      'Upgrade in-app to unlock lot tracking, bulk import, custom product fields, categories, more team members, and unlimited products and warehouses.',
+      'Upgrade in-app to unlock lot tracking, unlimited import, custom product fields, categories, more team members, and unlimited products and warehouses.',
   },
   notFound: {
     title: 'Page not found',

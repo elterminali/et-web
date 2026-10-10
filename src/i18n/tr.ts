@@ -5,13 +5,13 @@ export const tr: Translations = {
     siteName: 'eltrm',
     homeTitle: "eltrm — Stokta ne var, nerede ve son kullanma tarihi ne zaman",
     homeDescription:
-      'Barkod tarayın, depolar arası lot ve son kullanma tarihlerini takip edin, envanterinizi mobil veya web üzerinden yönetin. Eitan & Meir GmbH tarafından geliştirildi.',
+      'Barkod tarayın, depolar arası lot ve son kullanma tarihlerini takip edin, envanterinizi mobil veya web üzerinden yönetin. Kredi kartı olmadan ücretsiz başlayın. Eitan & Meir GmbH tarafından geliştirildi.',
     featuresTitle: 'Özellikler — eltrm',
     featuresDescription:
       'Barkod tarama, lot takibi, son kullanma tarihleri, çok depolu yönetim, raporlar ve daha fazlası. eltrm tüm yeteneklerini keşfedin.',
     plansTitle: 'Planlar ve Özellikler — eltrm',
     plansDescription:
-      'Temel envanter yönetimiyle ücretsiz başlayın. Lot takibi, toplu içe aktarma, özel alanlar ve sınırsız depo için Premium\'a geçin.',
+      'Temel envanter yönetimiyle ücretsiz başlayın. 100 ürüne kadar Excel içe aktarma ücretsizdir. Lot takibi, özel alanlar ve sınırsız depo için Premium\'a geçin.',
     downloadTitle: 'eltrm\'i İndirin',
     downloadDescription:
       'eltrm\'yi iOS, Android\'de edinin veya app.eltrm.com adresinden web uygulamasını kullanın. Envanterinizi her yerden yönetin.',
@@ -52,7 +52,7 @@ export const tr: Translations = {
     title: 'Stokta ne var, nerede ve son kullanma tarihi ne zaman.',
     description:
       'Barkod tarayın, depolar arası lot ve son kullanma tarihlerini takip edin, envanterinizi mobil veya web üzerinden yönetin.',
-    ctaWebApp: 'Web Uygulamasını Aç',
+    ctaWebApp: 'Ücretsiz başlayın',
     ctaDownload: 'Uygulamayı İndir',
     ctaHowItWorks: 'Nasıl çalıştığını gör',
     mockupAlt: 'eltrm uygulama arayüzü illüstrasyonu',
@@ -106,7 +106,7 @@ export const tr: Translations = {
       'Pano metrikleri, tarih aralığına göre işlem özetleri, depo bazlı envanter durumu ve kategoriye göre stok görüntüleyin. Raporları CSV olarak dışa aktarın.',
     importExportTitle: 'Toplu içe ve dışa aktarma',
     importExportDescription:
-      'İndirilebilir bir şablon kullanarak Excel veya CSV\'den ürünleri içe aktarın. Raporları ve işlem verilerini istediğiniz zaman dışa aktarın. (İçe aktarma için Premium)',
+      'İndirilebilir bir şablon kullanarak Excel veya CSV\'den ürünleri içe aktarın. Ücretsiz planda 100 ürüne kadar. Raporları ve işlem verilerini istediğiniz zaman dışa aktarın.',
     alertsTitle: 'Düşük stok uyarıları',
     alertsDescription:
       'Ürün başına minimum stok seviyesi belirleyin. Envanter eşiğin altına düştüğünde panoda ve mobil uyarılarda bildirim alın.',
@@ -121,7 +121,7 @@ export const tr: Translations = {
     badge: 'Planlar',
     title: 'Ücretsiz başlayın. İhtiyaç duyduğunuzda yükseltin.',
     description:
-      'Ücretsiz plan envanterinizi yönetmek için temel araçları sunar. Premium; lot takibi, toplu içe aktarma ve daha fazlasını açar — uygulama içinden istediğiniz zaman yükseltin.',
+      'Ücretsiz plan envanterinizi yönetmek için temel araçları ve 100 ürüne kadar Excel içe aktarmayı sunar. Premium; lot takibi, sınırsız içe aktarma ve daha fazlasını açar — uygulama içinden istediğiniz zaman yükseltin.',
     freePlanName: 'Ücretsiz',
     freePlanDescription: 'Kredi kartı gerektirmeyen temel envanter yönetimi.',
     freeCtaLabel: 'Ücretsiz başlayın',
@@ -130,12 +130,13 @@ export const tr: Translations = {
     freePlanFeature3: 'Çoklu depolar',
     freePlanFeature4: 'Düşük stok uyarıları',
     freePlanFeature5: 'Raporlar ve CSV dışa aktarma',
+    freePlanFeature6: '100 ürüne kadar Excel / CSV içe aktarma',
     premiumPlanName: 'Premium',
     premiumPlanDescription:
       'Ücretsiz plandaki her şey ve ciddi envanter operasyonlarının ihtiyaç duyduğu özellikler.',
     premiumCtaLabel: 'Uygulama içinden yükseltin',
     premiumPlanFeature1: 'Lot ve son kullanma tarihi takibi',
-    premiumPlanFeature2: 'Toplu ürün içe aktarma (Excel / CSV)',
+    premiumPlanFeature2: 'Sınırsız Excel / CSV içe aktarma',
     premiumPlanFeature3: 'Özel ürün alanları',
     premiumPlanFeature4: 'Filtreli ürün kategorileri',
     premiumPlanFeature5: 'Daha fazla ekip üyesi',
@@ -229,7 +230,7 @@ export const tr: Translations = {
     faqSubtitle: 'En yaygın sorulara hızlı yanıtlar.',
     faq1Q: 'Ürün nasıl eklerim?',
     faq1A:
-      'Web uygulamasında veya mobil uygulamada Ürünler\'e gidin ve + düğmesine dokunun. Ürün adını, barkodu ve ek ayrıntıları girin. Ayrıca Excel veya CSV şablonu kullanarak ürünleri toplu olarak içe aktarabilirsiniz (Premium).',
+      'Web uygulamasında veya mobil uygulamada Ürünler\'e gidin ve + düğmesine dokunun. Ürün adını, barkodu ve ek ayrıntıları girin. Ayrıca Excel veya CSV şablonu kullanarak 100 ürüne kadar toplu içe aktarabilirsiniz. Sınırsız içe aktarma Premium\'dadır.',
     faq2Q: 'Barkodları nasıl tarayabilirim?',
     faq2A:
       'iOS veya Android\'de uygulamayı açın ve ana ekrandaki veya işlem formundaki Tara düğmesini kullanın. Kamera etkinleşir ve EAN, UPC veya QR barkod tarar. Web uygulamasında USB barkod okuyucu kullanabilir veya barkodları manuel olarak girebilirsiniz.',
@@ -271,7 +272,7 @@ export const tr: Translations = {
       'Raporlara Raporlar bölümünden erişin. CSV\'ye aktarın. Envanter raporlarını doğrudan tarayıcıdan yazdırın.',
     premiumTitle: 'Premium özellikler',
     premiumDescription:
-      'Lot takibi, toplu içe aktarma, özel ürün alanları, kategoriler, daha fazla ekip üyesi ve sınırsız ürün ile depoların kilidini açmak için uygulama içinden yükseltin.',
+      'Lot takibi, sınırsız içe aktarma, özel ürün alanları, kategoriler, daha fazla ekip üyesi ve sınırsız ürün ile depoların kilidini açmak için uygulama içinden yükseltin.',
   },
   notFound: {
     title: 'Sayfa bulunamadı',

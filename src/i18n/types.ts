@@ -102,6 +102,7 @@ export interface Translations {
     freePlanFeature3: string;
     freePlanFeature4: string;
     freePlanFeature5: string;
+    freePlanFeature6: string;
     premiumPlanName: string;
     premiumPlanDescription: string;
     premiumCtaLabel: string;
